@@ -11,17 +11,17 @@
 
 :root {
   /* Light Mode (default) */
-  --cs-background:    hsl(40, 15%, 95%);   /* #F3F1EC */
-  --cs-foreground:    hsl(230, 25%, 10%);  /* #141521 */
-  --cs-primary:       hsl(72, 75%, 32%);   /* #7B8A14 */
-  --cs-primary-fg:    hsl(40, 15%, 95%);   /* #F3F1EC */
-  --cs-card:          hsl(40, 12%, 92%);   /* #EDEAE3 */
-  --cs-secondary:     hsl(40, 8%, 88%);    /* #E2E0DB */
-  --cs-border:        hsl(40, 8%, 82%);    /* #D4D1CB */
-  --cs-dim:           hsl(230, 6%, 62%);   /* #989AA0 */
-  --cs-mid:           hsl(230, 6%, 45%);   /* #6C6D75 */
-  --cs-code-bg:       hsl(40, 10%, 90%);   /* #E7E5DF */
-  --cs-accent-glow:   hsl(72, 80%, 38%);
+  --cs-background:    hsl(40, 5%, 95%);    /* #F2F1EF */
+  --cs-foreground:    hsl(0, 0%, 9%);      /* #171717 */
+  --cs-primary:       hsl(0, 0%, 9%);      /* #171717 */
+  --cs-primary-fg:    hsl(40, 5%, 95%);    /* #F2F1EF */
+  --cs-card:          hsl(40, 3%, 91%);    /* #E8E7E5 */
+  --cs-secondary:     hsl(0, 0%, 88%);     /* #E0E0E0 */
+  --cs-border:        hsl(0, 0%, 80%);     /* #CCCCCC */
+  --cs-dim:           hsl(0, 0%, 62%);     /* #9E9E9E */
+  --cs-mid:           hsl(0, 0%, 42%);     /* #6B6B6B */
+  --cs-code-bg:       hsl(0, 0%, 89%);     /* #E3E3E3 */
+  --cs-accent-glow:   hsl(0, 0%, 20%);     /* #333333 */
 
   /* Slidev overrides */
   --slidev-theme-primary: var(--cs-primary);
@@ -29,17 +29,17 @@
 
 .dark {
   /* Dark Mode */
-  --cs-background:    hsl(230, 20%, 6%);   /* #0E0F14 */
-  --cs-foreground:    hsl(45, 10%, 88%);   /* #E3E1D9 */
-  --cs-primary:       hsl(72, 88%, 42%);   /* #B4C914 */
-  --cs-primary-fg:    hsl(230, 20%, 6%);   /* #0E0F14 */
-  --cs-card:          hsl(230, 18%, 9%);   /* #131520 */
-  --cs-secondary:     hsl(230, 12%, 14%);  /* #1F2029 */
-  --cs-border:        hsl(230, 10%, 18%);  /* #292A33 */
-  --cs-dim:           hsl(230, 8%, 28%);   /* #424347 */
-  --cs-mid:           hsl(230, 6%, 48%);   /* #74757A */
-  --cs-code-bg:       hsl(230, 15%, 10%);  /* #151721 */
-  --cs-accent-glow:   hsl(72, 90%, 50%);
+  --cs-background:    hsl(0, 0%, 5%);      /* #0D0D0D */
+  --cs-foreground:    hsl(0, 0%, 87%);     /* #DEDEDE */
+  --cs-primary:       hsl(0, 0%, 87%);     /* #DEDEDE */
+  --cs-primary-fg:    hsl(0, 0%, 5%);      /* #0D0D0D */
+  --cs-card:          hsl(0, 0%, 8%);      /* #141414 */
+  --cs-secondary:     hsl(0, 0%, 15%);     /* #262626 */
+  --cs-border:        hsl(0, 0%, 18%);     /* #2E2E2E */
+  --cs-dim:           hsl(0, 0%, 28%);     /* #474747 */
+  --cs-mid:           hsl(0, 0%, 48%);     /* #7A7A7A */
+  --cs-code-bg:       hsl(0, 0%, 10%);     /* #1A1A1A */
+  --cs-accent-glow:   hsl(0, 0%, 70%);     /* #B3B3B3 */
 
   --slidev-theme-primary: var(--cs-primary);
 }
@@ -93,6 +93,7 @@
 
   a:hover {
     color: var(--cs-accent-glow);
+    opacity: 0.9;
   }
 
   /* Lists */
@@ -321,6 +322,12 @@
     padding-bottom: 0.5rem;
     border-bottom: 1px solid var(--cs-border);
   }
+}
+
+/* Selection */
+::selection {
+  background: color-mix(in srgb, var(--cs-primary) 25%, transparent);
+  color: var(--cs-foreground);
 }
 
 /* ============================================================

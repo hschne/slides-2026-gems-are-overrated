@@ -36,8 +36,51 @@ Presentation slides for developers
 </div>
 
 <!--
-The last comment block of each slide will be treated as slide notes. It will be visible and editable in Presenter Mode along with the slide. [Read more in the docs](https://sli.dev/guide/syntax.html#notes)
+- I love gems. It's what attracted me to the ecosystem
+- The first professional project I worked on used hundreds of gems
+- Why is clear, we use the work of other people because it's quicker.
+- We use client libraries because we don't want to write our own
+- We use device because we dont' want to write our own auth logic
+- But using gems has risks
+- Rubygems drama
+- Supply chain attacks
+- Adn not to mention churn
+- Ultimately, we hand of responsibility because it's easier
+- Adn that makes sense, you just don't have time
+
+- Using gem pro and con: 
+- Pro: 
+- Saves work
+- Security updates
+- Profit from maintainer experience
+
+- Con: 
+- The feared dependency updates and hunting for breakage
+- Supply chain attacks
+- You don't control it - upstreaming work not always possible
+
+- What even is the alternative? 
+- DIY of course!
+- You fork or you vendor
+- Or build something from scratch
+- The nice thing about DIY is you learn something
+- You have a focused thing that suits your problem
+- 
+- Why not DIY? 
+- AINT NOBODY GOT TIME FOR THAT
+
+- You know what's even better than DIY? Stealing.
+- Okay, imitation. 
+- Reading other gems and learning from them. Then surgically picking what you need. You vendor.
+
+- It's strictly better. You profit from maintainer experience. No supply chain attacks. UPstreaming work is  trivial because there's no upstream.
 -->
+
+---
+
+# Resources
+
+- Nate link about copy pasta and AI https://x.com/i/status/2025322226455908433
 
 ---
 transition: fade-out
@@ -621,4 +664,3 @@ class: text-center
 
 Resources:
 
-- Nate link about copy pasta and AI https://x.com/i/status/2025322226455908433
