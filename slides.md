@@ -1,23 +1,17 @@
 ---
-# try also 'default' to start simple
-theme: seriph
-# random image from a curated Unsplash collection by Anthony
-# like them? see https://unsplash.com/collections/94734566/slidev
-background: https://cover.sli.dev
+theme: ./theme
+layout: cover
 # some information about your slides (markdown enabled)
 title: Welcome to Slidev
 info: |
-  ## Slidev Starter Template
-  Presentation slides for developers.
-
-  Learn more at [Sli.dev](https://sli.dev)
+  // concrete syntax demo
 # apply UnoCSS classes to the current slide
-class: text-center
+class: concrete-syntax
 # https://sli.dev/features/drawing
 drawings:
   persist: false
 # slide transition: https://sli.dev/guide/animations.html#slide-transitions
-transition: slide-left
+transition: fade
 # enable MDC Syntax: https://sli.dev/features/mdc
 mdc: true
 # duration of the presentation
@@ -28,7 +22,7 @@ duration: 35min
 
 Presentation slides for developers
 
-<div @click="$slidev.nav.next" class="mt-12 py-1" hover:bg="white op-10">
+<div @click="$slidev.nav.next" class="mt-12 py-1" hover:bg="transparent">
   Press Space for next page <carbon:arrow-right />
 </div>
 
@@ -70,17 +64,6 @@ You can have `style` tag in markdown to override the style for the current page.
 Learn more: https://sli.dev/features/slide-scope-style
 -->
 
-<style>
-h1 {
-  background-color: #2B90B6;
-  background-image: linear-gradient(45deg, #4EC5D4 10%, #146b8c 20%);
-  background-size: 100%;
-  -webkit-background-clip: text;
-  -moz-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  -moz-text-fill-color: transparent;
-}
-</style>
 
 <!--
 Here is another comment.
@@ -635,3 +618,7 @@ class: text-center
 [Documentation](https://sli.dev) · [GitHub](https://github.com/slidevjs/slidev) · [Showcases](https://sli.dev/resources/showcases)
 
 <PoweredBySlidev mt-10 />
+
+Resources:
+
+- Nate link about copy pasta and AI https://x.com/i/status/2025322226455908433

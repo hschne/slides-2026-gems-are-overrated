@@ -1,0 +1,363 @@
+/* ============================================================
+   Concrete Syntax Design System — Slidev Theme
+   ============================================================ */
+
+/* Google Fonts import */
+@import url('https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@400;700;800;900&family=IBM+Plex+Mono:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap');
+
+/* ============================================================
+   CSS Custom Properties (Design Tokens)
+   ============================================================ */
+
+:root {
+  /* Light Mode (default) */
+  --cs-background:    hsl(40, 15%, 95%);   /* #F3F1EC */
+  --cs-foreground:    hsl(230, 25%, 10%);  /* #141521 */
+  --cs-primary:       hsl(72, 75%, 32%);   /* #7B8A14 */
+  --cs-primary-fg:    hsl(40, 15%, 95%);   /* #F3F1EC */
+  --cs-card:          hsl(40, 12%, 92%);   /* #EDEAE3 */
+  --cs-secondary:     hsl(40, 8%, 88%);    /* #E2E0DB */
+  --cs-border:        hsl(40, 8%, 82%);    /* #D4D1CB */
+  --cs-dim:           hsl(230, 6%, 62%);   /* #989AA0 */
+  --cs-mid:           hsl(230, 6%, 45%);   /* #6C6D75 */
+  --cs-code-bg:       hsl(40, 10%, 90%);   /* #E7E5DF */
+  --cs-accent-glow:   hsl(72, 80%, 38%);
+
+  /* Slidev overrides */
+  --slidev-theme-primary: var(--cs-primary);
+}
+
+.dark {
+  /* Dark Mode */
+  --cs-background:    hsl(230, 20%, 6%);   /* #0E0F14 */
+  --cs-foreground:    hsl(45, 10%, 88%);   /* #E3E1D9 */
+  --cs-primary:       hsl(72, 88%, 42%);   /* #B4C914 */
+  --cs-primary-fg:    hsl(230, 20%, 6%);   /* #0E0F14 */
+  --cs-card:          hsl(230, 18%, 9%);   /* #131520 */
+  --cs-secondary:     hsl(230, 12%, 14%);  /* #1F2029 */
+  --cs-border:        hsl(230, 10%, 18%);  /* #292A33 */
+  --cs-dim:           hsl(230, 8%, 28%);   /* #424347 */
+  --cs-mid:           hsl(230, 6%, 48%);   /* #74757A */
+  --cs-code-bg:       hsl(230, 15%, 10%);  /* #151721 */
+  --cs-accent-glow:   hsl(72, 90%, 50%);
+
+  --slidev-theme-primary: var(--cs-primary);
+}
+
+/* ============================================================
+   Base Typography
+   ============================================================ */
+
+.slidev-layout {
+  font-family: 'IBM Plex Mono', monospace;
+  background-color: var(--cs-background);
+  color: var(--cs-foreground);
+  font-size: 14px;
+  line-height: 1.6;
+  border-radius: 0 !important;
+
+  /* Reset border-radius everywhere */
+  * {
+    border-radius: 0 !important;
+  }
+
+  /* Headings — Big Shoulders Display, uppercase */
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Big Shoulders Display', sans-serif;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.02em;
+    color: var(--cs-foreground);
+    line-height: 1.1;
+  }
+
+  h1 { font-size: 3rem; font-weight: 800; }
+  h2 { font-size: 1.5rem; }
+  h3 { font-size: 1.125rem; }
+
+  /* Body text */
+  p {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 12px;
+    color: color-mix(in srgb, var(--cs-foreground) 70%, transparent);
+    line-height: 1.7;
+  }
+
+  /* Links */
+  a {
+    color: var(--cs-primary);
+    text-decoration: none;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11px;
+  }
+
+  a:hover {
+    color: var(--cs-accent-glow);
+  }
+
+  /* Lists */
+  ul, ol {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 12px;
+    color: color-mix(in srgb, var(--cs-foreground) 70%, transparent);
+    line-height: 1.7;
+    padding-left: 1.5em;
+  }
+
+  li {
+    margin-bottom: 0.35em;
+  }
+
+  /* Horizontal rules */
+  hr {
+    border: none;
+    border-top: 1px solid var(--cs-border);
+    margin: 1.5rem 0;
+  }
+
+  /* Inline code */
+  code:not(pre code) {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11px;
+    background-color: var(--cs-code-bg);
+    color: color-mix(in srgb, var(--cs-foreground) 90%, transparent);
+    padding: 0.15em 0.4em;
+    border: 1px solid var(--cs-border);
+  }
+
+  /* Code blocks */
+  pre {
+    background-color: var(--cs-code-bg) !important;
+    border: 1px solid var(--cs-border);
+    padding: 1rem;
+    overflow: auto;
+
+    code {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 11px;
+      line-height: 1.6;
+      color: color-mix(in srgb, var(--cs-foreground) 85%, transparent);
+      background: none;
+      border: none;
+      padding: 0;
+    }
+  }
+
+  /* Blockquotes */
+  blockquote {
+    border-left: 2px solid var(--cs-primary);
+    padding-left: 1rem;
+    margin-left: 0;
+    font-style: italic;
+
+    p {
+      font-size: 11px;
+      color: color-mix(in srgb, var(--cs-foreground) 60%, transparent);
+    }
+  }
+
+  /* Tables */
+  table {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11px;
+    border-collapse: collapse;
+    width: 100%;
+
+    th {
+      font-family: 'Big Shoulders Display', sans-serif;
+      font-weight: 700;
+      text-transform: uppercase;
+      font-size: 11px;
+      letter-spacing: 0.05em;
+      border-bottom: 1px solid var(--cs-primary);
+      padding: 0.4em 0.75em;
+      text-align: left;
+      color: var(--cs-foreground);
+    }
+
+    td {
+      padding: 0.4em 0.75em;
+      border-bottom: 1px solid var(--cs-border);
+      color: color-mix(in srgb, var(--cs-foreground) 70%, transparent);
+    }
+
+    tr:last-child td {
+      border-bottom: none;
+    }
+  }
+
+  /* kbd */
+  kbd {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 10px;
+    background-color: var(--cs-card);
+    border: 1px solid var(--cs-border);
+    padding: 0.1em 0.4em;
+    color: var(--cs-foreground);
+  }
+
+  /* Strong */
+  strong {
+    font-weight: 700;
+    color: var(--cs-foreground);
+  }
+}
+
+/* ============================================================
+   Section Header Component Pattern
+   ============================================================ */
+
+.cs-section-header {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 2rem;
+
+  h2 {
+    font-family: 'Big Shoulders Display', sans-serif;
+    font-size: 1.5rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    white-space: nowrap;
+    margin: 0;
+  }
+
+  &::after {
+    content: '';
+    display: block;
+    height: 1px;
+    flex: 1;
+    background-color: var(--cs-border);
+  }
+}
+
+/* ============================================================
+   Cover Layout
+   ============================================================ */
+
+.slidev-layout.cover {
+  @apply h-full flex flex-col justify-center;
+  padding: 3rem 4rem;
+  background-color: var(--cs-background);
+  position: relative;
+
+  /* Accent mark — thin horizontal line */
+  &::before {
+    content: '';
+    display: block;
+    position: absolute;
+    top: 3rem;
+    left: 4rem;
+    width: 2rem;
+    height: 2px;
+    background-color: var(--cs-primary);
+  }
+
+  h1 {
+    font-family: 'Big Shoulders Display', sans-serif;
+    font-size: clamp(2.5rem, 6vw, 4rem);
+    font-weight: 900;
+    text-transform: uppercase;
+    letter-spacing: 0.02em;
+    line-height: 1;
+    color: var(--cs-foreground);
+    margin-bottom: 0.5rem;
+  }
+
+  h1 + p {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 12px;
+    color: var(--cs-mid);
+    margin-top: 0.75rem;
+    margin-bottom: 0;
+  }
+
+  p + h2,
+  ul + h2,
+  table + h2 {
+    margin-top: 2.5rem;
+  }
+}
+
+/* ============================================================
+   Intro Layout
+   ============================================================ */
+
+.slidev-layout.intro {
+  @apply h-full flex flex-col justify-center;
+  padding: 3rem 4rem;
+  background-color: var(--cs-background);
+
+  h1 {
+    font-family: 'Big Shoulders Display', sans-serif;
+    font-size: 2.25rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    color: var(--cs-foreground);
+    margin-bottom: 1rem;
+  }
+
+  p {
+    font-size: 12px;
+    color: var(--cs-mid);
+  }
+}
+
+/* ============================================================
+   Default / Content Layout
+   ============================================================ */
+
+.slidev-layout.default {
+  padding: 2rem 3rem;
+  background-color: var(--cs-background);
+
+  h1 {
+    font-family: 'Big Shoulders Display', sans-serif;
+    font-size: 2rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    color: var(--cs-foreground);
+    margin-bottom: 1.25rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid var(--cs-border);
+  }
+}
+
+/* ============================================================
+   Slidev UI Overrides
+   ============================================================ */
+
+/* Navigation bar */
+.slidev-nav {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 10px;
+}
+
+/* Slide number */
+.slidev-page-number {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 10px;
+  color: var(--cs-dim);
+}
+
+/* Shiki code blocks */
+.slidev-code {
+  border-radius: 0 !important;
+  border: 1px solid var(--cs-border);
+
+  .slidev-code-header {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 9px;
+    color: var(--cs-dim);
+    background-color: var(--cs-card);
+    border-bottom: 1px solid var(--cs-border);
+    padding: 0.4rem 0.75rem;
+    text-transform: lowercase;
+  }
+}
+
+/* Progress / slide counter accent */
+.slidev-progress {
+  background-color: var(--cs-primary) !important;
+  height: 1px !important;
+}

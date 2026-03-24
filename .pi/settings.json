@@ -1,0 +1,13 @@
+{
+  "formatters": {
+    "prettier": {
+      "disabled": true
+    },
+    "herb": {
+      "disabled": true
+    },
+    "shfmt": {
+      "disabled": true
+    }
+  }
+}
