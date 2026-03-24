@@ -1,5 +1,5 @@
 ---
-theme: ./theme
+theme: ./concrete-syntax
 layout: cover
 # some information about your slides (markdown enabled)
 title: Welcome to Slidev
