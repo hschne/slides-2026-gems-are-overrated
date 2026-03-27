@@ -1,8 +1,7 @@
 ---
 theme: ./concrete-syntax
 layout: cover
-# some information about your slides (markdown enabled)
-title: Welcome to Slidev
+title: Gems are Overrated
 info: |
   // concrete syntax demo
 # apply UnoCSS classes to the current slide
@@ -35,6 +34,114 @@ Presentation slides for developers
   </a>
 </div>
 
+---
+
+# Story outline
+
+- Disclaimer. I thought this conference was about hot takes. So far, it's been a bit mild. 
+- We're not going to do that. This is going to be spicy. I'm gonna throw some shade and ruffle some feathers. But, I do want to say this: 
+- I absolutely love the Ruby ecosystem, Ruby gems are literally what got me into ruby. I learned so much looking at other people's gems, and I, in no way shape or form, want to denigrate the work that other people have been doing, sometimes for years. I'm only here because of the work Gem maintainers have been doing, and I am incredibly thankful for that. Whatever comes next, my goal is to educate, inspire and entertain - and not to shit on other people's work. Even if it may seem so. With that being said. Story time. 
+
+- We need to add new feature to our application 
+- We need pagination because lists are long 
+- So we do what any responsible ruby developer does
+- We add a gem <animation of googling for ruby pagination gem> here
+- Easy. Now all we need to do is read the docs
+- And add a tiny weeny bit of code. 
+- And we have our pagination. Success
+- The end. Thank you for coming to my talk.
+
+- Had you for a second, didn't I. 
+- This is not the end, unfortunately. 
+- A couple of months later, you do a gem upgrade.
+- Uh oh, you get a warning. This gem doesn't support your ruby version.
+- So, I guess we have to update the gem.
+- We update the gem, and because we are responsible developers we run our tests.
+- Uh oh, our tests are failing
+- What the heck? Something must have changed in that gem, right?
+- Let's find out what changed, can't be too bad. 
+- Uh oh. <endless changelog here>
+- What the fuck, it's been like three months, you know?
+
+- At this point we have an epiphany. Maybe we don't need all that. Let's see what we actually need to support our feature.
+- <tiny code sample of pagination here>
+- Oh. Well. Huh. You tell me, was it worth adding a gem for that?
+
+- Alright, my name is hans
+- I'm Ruby freelancer from Vienna
+- Vienna.rb Meetup Organizer and also co-organizing RubyConf.at (which takes place in two weeks, tickets still available, cough cough)
+
+- And I want to talk about why gems are overrated
+
+- Let's start back at the beginning
+- and let's unpack why we use gems in the first place. 
+- It's because of Math. We do a calculation: How much effort is it to do this myself vs just pulling in a Gem? And of course, that depends on the gem, but in general
+- Adding a gem is easy, the good ones have setup commands and you can literally be done in 5 seconds. So if we do the math, comparing using gems vs rolling our own implementation often looks like this.
+- <graphic of comparing effort, low effort for using a gem vs building yourself>
+- Alas, like I said, if this was where the story ends, it's easy. But the story goes on.
+
+- And with time things change. Because gems, or using dependencies in general, bring risk.
+- They may or may not churn. SOme gems have a huge surface area and be updated constantly, and that means you have to deal with dependabot.
+- <long ass dependabot list image>
+- Or they may go unmaintained, which is the opposite of that. So you end up patching code, or hunting for alternatives for functionality that is deeply ingrained into your app.
+- There's also security updates and supply chain attacks, which are their own topic. Not to mention political scandals.
+- < image of rubygems drama stuff> 
+- Still boggles the mind. Anyway. 
+
+- All this can lead to the effort over time to actually look like this
+- <effort over time graphic here>
+
+- What about if we do it ourselves?
+- Does your own implementation churn and change? Only if you change it
+- Supply chain attacks? What do you mean, I AM THE SUPPLY CHAIN
+- Drama? Most certainly not.
+
+- <compared effort over time graphic>  
+
+- Of course that's not all there is. 
+- There are things that gems do that you simply can't do.
+- For one, there are marvelous things out there that you simply cannot properly implement yourself. 
+- Additinoally, security, CVEs are actually a good thing, right? Gems are open source, crowdsourced security. 
+- If you add bugs or security holes to your own code, nobody will fix it yourself.
+
+- So what should you do, use a gem or build it yourself?
+- How about option number three, intellectual property theft?
+- You wouldn't steal a car, but you most certain would steal a gem.
+- Who said you have to start from scratch?
+- We could fork stuff, but I'll be honest, I really like vendoring. 
+- But you know, vendoring as it stands has it's own problems.
+- The core issue of many gems that we haven't talked about is, that because they are useful, pepole want to add stuff to them
+- They make them configurable, and so on. Add new features, toggles/
+- <maybe LoC statistic of how much is overhead>?
+- It's precicely why they are so attractive. We might need that, right? No, YAGNI
+- So instead of forking or vendoring, what about this? 
+- You figure out what exactly you need. You read other gems and learning from them. Then surgically picking what you need. You vendor, but you're picky about it.
+- It's strictly better. You profit from maintainer experience. No supply chain attacks.
+- YOu might find that for what you need, you can boil it down to a single file.
+
+- <samples for copy pasta gems>
+
+- Let's revisit our cost calculation.
+- We said before there are things we can't do, but the library can? Now we can do, all we needed was some inspiration.
+- And the best thing, because we focused on what we actually need, both effort in the long run and immediate effort goes down dramatically.
+- <cost effort comparison again>
+
+- Now, actually, it gets even better.
+- Cant do a talk these days without shoe horning some AI into it, right?
+- With AI, the initial effort goes down, as does everything else.
+- It's all a prompt away
+- <Sample prompt here>
+
+- So eelephant in the room does that mean libraries are dead? Are our beloved gems dead?
+- Depends. Remember the reasons why we use gems in the first place, and if you'd hand roll em yourself.
+- Would I replace Devise with a hand rolled solution? Ehhh maybe not. What about bcrypt? Ehhhh Some things are just to sensitive to touch.
+- Here the cost/benefit/ratio is just off. 
+- But utility gems? Oh heck yeah.
+
+
+---
+
+# Ideas
 <!--
 - I love gems. It's what attracted me to the ecosystem
 - The first professional project I worked on used hundreds of gems
@@ -71,9 +178,6 @@ Presentation slides for developers
 
 - You know what's even better than DIY? Stealing.
 - Okay, imitation. 
-- Reading other gems and learning from them. Then surgically picking what you need. You vendor.
-
-- It's strictly better. You profit from maintainer experience. No supply chain attacks. UPstreaming work is  trivial because there's no upstream.
 -->
 
 ---
