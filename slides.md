@@ -137,6 +137,8 @@ Presentation slides for developers
 - Would I replace Devise with a hand rolled solution? Ehhh maybe not. What about bcrypt? Ehhhh Some things are just to sensitive to touch.
 - Here the cost/benefit/ratio is just off. 
 - But utility gems? Oh heck yeah.
+- Is this ethical? 
+- Some say no, e.g. https://railsdesigner.com/note/1772604707/
 
 
 ---
