@@ -204,12 +204,13 @@ end
 
 ---
 layout: center
+class: table-xl
 ---
 
 
 | Gem  | Lines of code | Releases | Issues / month |
 |---|---:|---:|---:|
-| Pagy | 2,835 | 85 | ~9 |
+| Pagy | 2835 | 85 | ~9 |
 | Copy-Pasta Pagy | 53 | 1 | 0 |
 
 
@@ -223,6 +224,104 @@ layout: center
 
 ---
 
+# Pundit
+
+```ruby [Gemfile]
+gem "pundit"
+```
+
+```ruby [app/controllers/application_controller.rb]
+include Pundit::Authorization
+```
+
+```ruby [app/policies/post_policy.rb]
+class PostPolicy < ApplicationPolicy
+  def update?
+    user == record.author
+  end
+end
+```
+
+```ruby [app/controllers/posts_controller.rb]
+def update
+  authorize @post
+end
+```
+
+<!--
+- Authorization is another classic gem grab. I need to control who can do what, so I reach for Pundit.
+- The convention is elegant: one policy class per model, one method per action.
+- But again, the gem has to support namespaces, scopes, strong parameters, caching, view helpers, test helpers...
+-->
+
+---
+
+# One-File Pundit
+
+```ruby [app/concerns/pundit.rb] {*}{lines:true}
+module Pundit
+  class ApplicationPolicy
+    attr_reader :user, :record
+
+    def initialize(user, record)
+      @user   = user
+      @record = record
+    end
+
+    def index?   = false
+    def show?    = false
+    def new?     = false
+    def create?  = false
+    def edit?    = false
+    def update?  = false
+    def destroy? = false
+  end
+
+  # ...
+```
+
+<!--
+- The base class is the interesting part. Everything denied by default — you opt in per action.
+- That is the core idea. The rest of the gem is infrastructure around it.
+-->
+
+---
+
+```ruby [app/concerns/pundit.rb] {*}{lines:true,startLine:19}
+  # ...
+
+  class NotAuthorizedError < StandardError; end
+
+  module Controller
+    protected
+
+    def authorize(record, query = :"#{action_name}?")
+      policy = "#{record.class}Policy".constantize.new(current_user, record)
+      raise NotAuthorizedError unless policy.public_send(query)
+
+      record
+    end
+  end
+end
+```
+
+<!--
+- The authorize method is a single convention: take the record's class name, find the matching policy, call the right method.
+- PostPolicy, show?, done.
+- The whole gem in one method.
+-->
+
+---
+layout: center
+class: table-xl
+---
+
+| Gem | Lines of code | Releases | Issues / month |
+|---|---:|---:|---:|
+| Pundit | 1124 | 47 | ~3 |
+| Copy-Pasta Pundit | 30 | 1 | 0 |
+
+---
 # Lograge
 
 ```ruby [Gemfile]
@@ -248,7 +347,7 @@ method=GET path=/products format=html controller=ProductsController action=index
 
 # Copy-Paste Lograge
 
-```ruby {*}{lines:true} [config/initializers/lograge.rb]
+```ruby [config/initializers/lograge.rb] {*}{lines:true}
 class Lograge
   module RackLogger
     private def logger = Object.new.tap { |o| o.define_singleton_method(:info) {} }
@@ -313,6 +412,7 @@ Lograge.setup
 
 ---
 layout: center
+class: table-xl
 ---
 
 
@@ -321,8 +421,6 @@ layout: center
 | Lograge | 863 | 39 | ~2 |
 | Copy-Pasta Lograge | 55 | 1 | 0 |
 
-
----
 
 # The tradeoff more clearly
 
