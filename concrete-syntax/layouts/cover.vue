@@ -45,7 +45,8 @@
   bottom: 2rem;
   left: 4rem;
   font-family: 'IBM Plex Mono', monospace;
-  font-size: 9px;
-  color: var(--cs-dim);
+  font-size: clamp(0.8rem, 0.95vw, 0.9rem);
+  color: var(--cs-text);
+  letter-spacing: 0.02em;
 }
 </style>

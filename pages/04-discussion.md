@@ -16,7 +16,10 @@ layout: fact
 
 ---
 
-# AI Overlord Images
+<div class="h-full flex flex-col items-center justify-center gap-4 py-6">
+  <img src="../img/friendly-ai-overlords.png" alt="Friendly AI overlords" class="max-h-[60vh] w-auto object-contain rounded" />
+  <figcaption class="text-sm">"Create an image depicting our friendly AI overlords"</figcaption>
+</div>
 
 ---
 layout: quote

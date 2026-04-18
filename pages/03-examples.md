@@ -39,8 +39,6 @@ module Pagy
 ---
 
 ```ruby [app/concerns/pagy.rb] {*}{lines:true,startLine:23}
-  # ...
-
   module Helper
     def pagy_nav(pagy)
       return unless pagy[:total_pages] > 1
@@ -139,9 +137,7 @@ module Pundit
 
 ---
 
-```ruby [app/concerns/pundit.rb] {*}{lines:true,startLine:19}
-  # ...
-
+```ruby [app/concerns/pundit.rb] {*}{lines:true,startLine:20}
   class NotAuthorizedError < StandardError; end
 
   module Controller
@@ -234,7 +230,7 @@ class Lograge
 
 ---
 
-```ruby [config/initializers/lograge.rb] {*}{lines:true,startLine:12}
+```ruby [config/initializers/lograge.rb] {*}{lines:true,startLine:20}
   class << self
     def setup
       Rails::Rack::Logger.prepend(RackLogger)

@@ -1,24 +1,52 @@
 <script setup lang="ts">
-import IconWrench from '~icons/lucide/hammer'
+import { computed } from 'vue'
+import IconHammer from '~icons/lucide/hammer'
 import IconGem from '~icons/lucide/gem'
+
+const props = withDefaults(defineProps<{
+  leftColor?: string
+  rightColor?: string
+  leftLabel?: string
+  rightLabel?: string
+  text?: string
+  size?: string
+  gap?: string
+}>(), {
+  leftColor: '#F69D50',
+  rightColor: '#6CB6FF',
+  leftLabel: 'Left side',
+  rightLabel: 'Right side',
+  text: 'VS',
+  size: 'clamp(220px, 22vw, 340px)',
+  gap: 'clamp(1.5rem, 5vw, 4.5rem)',
+})
+
+const rootStyle = computed(() => ({
+  '--versus-size': props.size,
+  '--versus-gap': props.gap,
+}))
 </script>
 
 <template>
-  <div class="vs-graphic">
-    <div class="badge badge-custom" aria-label="Custom">
+  <div class="versus" :style="rootStyle">
+    <div class="badge" :aria-label="leftLabel">
       <div class="badge-mid">
-        <div class="badge-inner">
-          <IconWrench class="icon" />
+        <div class="badge-inner icon-wrap" :style="{ color: leftColor }">
+          <slot name="left-icon">
+            <IconHammer class="icon" />
+          </slot>
         </div>
       </div>
     </div>
 
-    <div class="vs-label">VS</div>
+    <div class="versus-label">{{ text }}</div>
 
-    <div class="badge badge-gem" aria-label="Gem">
+    <div class="badge" :aria-label="rightLabel">
       <div class="badge-mid">
-        <div class="badge-inner">
-          <IconGem class="icon" />
+        <div class="badge-inner icon-wrap" :style="{ color: rightColor }">
+          <slot name="right-icon">
+            <IconGem class="icon" />
+          </slot>
         </div>
       </div>
     </div>
@@ -26,28 +54,30 @@ import IconGem from '~icons/lucide/gem'
 </template>
 
 <style scoped>
-.vs-graphic {
+.versus {
   width: 100%;
   height: 100%;
   min-height: 0;
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: clamp(1.5rem, 5vw, 4.5rem);
+  gap: var(--versus-gap);
   padding: 1rem 0;
 }
 
 .badge {
-  width: clamp(220px, 22vw, 340px);
+  width: var(--versus-size);
   aspect-ratio: 1 / 1;
-  border: 3px solid color-mix(in srgb, var(--cs-foreground) 92%, white);
+  border: 6px solid color-mix(in srgb, var(--cs-foreground) 95%, white);
   border-radius: 9999px;
   display: grid;
   place-items: center;
 }
+
 .badge-mid {
   width: 84%;
   height: 84%;
+  border: 3px solid color-mix(in srgb, var(--cs-foreground) 95%, white);
   border-radius: 9999px;
   display: grid;
   place-items: center;
@@ -61,31 +91,27 @@ import IconGem from '~icons/lucide/gem'
   place-items: center;
 }
 
-.badge-custom .badge-mid {
-  background: color-mix(in srgb, #F69D50 72%, transparent);
-}
-.badge-custom .badge-inner {
-  background: #F69D50;
-}
-
-.badge-gem .badge-mid {
-  background: color-mix(in srgb, #6CB6FF 72%, transparent);
-}
-.badge-gem .badge-inner {
-  background: #6CB6FF;
+.icon-wrap {
+  color: currentColor;
 }
 
 .icon {
-  width: 48%;
-  height: 48%;
-  color: color-mix(in srgb, var(--cs-foreground) 95%, white);
-  stroke-width: 2.2;
+  width: 52%;
+  height: 52%;
+  stroke-width: 2.4;
 }
 
-.vs-label {
+.icon-wrap :deep(svg) {
+  width: 52%;
+  height: 52%;
+  color: currentColor;
+  stroke-width: 2.4;
+}
+
+.versus-label {
   font-family: 'Big Shoulders Display', sans-serif;
   color: color-mix(in srgb, var(--cs-foreground) 92%, white);
-  font-size: clamp(2.25rem, 5vw, 4.2rem);
+  font-size: clamp(2.1rem, 4.8vw, 4rem);
   font-weight: 800;
   letter-spacing: 0.04em;
 }

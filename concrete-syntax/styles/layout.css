@@ -11,21 +11,18 @@
 :root {
   /* Palette — light */
   --cs-background: hsl(40, 5%, 95%);
-  /* #F2F1EF */
   --cs-foreground: hsl(0, 0%, 9%);
-  /* #171717 */
   --cs-primary: hsl(0, 0%, 9%);
-  /* #171717 */
   --cs-primary-fg: hsl(40, 5%, 95%);
-  /* #F2F1EF */
   --cs-card: hsl(40, 3%, 91%);
-  /* #E8E7E5 */
   --cs-border: hsl(0, 0%, 80%);
-  /* #CCCCCC */
   --cs-dim: hsl(0, 0%, 62%);
-  /* #9E9E9E */
   --cs-mid: hsl(0, 0%, 42%);
-  /* #6B6B6B */
+
+  /* Derived text tokens */
+  --cs-text: color-mix(in srgb, var(--cs-foreground) 85%, transparent);
+  --cs-text-strong: color-mix(in srgb, var(--cs-foreground) 95%, transparent);
+  --cs-text-soft: color-mix(in srgb, var(--cs-foreground) 75%, transparent);
 
   /* Slidev theme integration */
   --slidev-theme-primary: var(--cs-primary);
@@ -48,21 +45,13 @@
 .dark {
   /* Palette — dark */
   --cs-background: hsl(0, 0%, 5%);
-  /* #0D0D0D */
   --cs-foreground: hsl(0, 0%, 87%);
-  /* #DEDEDE */
   --cs-primary: hsl(0, 0%, 87%);
-  /* #DEDEDE */
   --cs-primary-fg: hsl(0, 0%, 5%);
-  /* #0D0D0D */
   --cs-card: hsl(0, 0%, 8%);
-  /* #141414 */
   --cs-border: hsl(0, 0%, 18%);
-  /* #2E2E2E */
   --cs-dim: hsl(0, 0%, 28%);
-  /* #474747 */
   --cs-mid: hsl(0, 0%, 48%);
-  /* #7A7A7A */
 
   --slidev-code-background: var(--cs-card);
   --slidev-code-foreground: var(--cs-foreground);
@@ -79,7 +68,7 @@
   font-family: 'IBM Plex Mono', monospace;
   background-color: var(--cs-background);
   color: var(--cs-foreground);
-  font-size: 14px;
+  font-size: clamp(0.95rem, 1.1vw, 1.05rem);
   line-height: 1.6;
 
   /* Headings */
@@ -113,16 +102,16 @@
 
   /* Body */
   p {
-    font-size: 12px;
-    color: color-mix(in srgb, var(--cs-foreground) 70%, transparent);
+    font-size: clamp(0.95rem, 1.15vw, 1.05rem);
+    color: var(--cs-text);
     line-height: 1.7;
   }
 
   /* Links */
   a {
-    color: var(--cs-primary);
+    color: var(--cs-foreground);
     text-decoration: none;
-    font-size: 11px;
+    font-size: inherit;
     border-bottom: none;
   }
 
@@ -133,8 +122,8 @@
   /* Lists */
   ul,
   ol {
-    font-size: 12px;
-    color: color-mix(in srgb, var(--cs-foreground) 70%, transparent);
+    font-size: clamp(0.95rem, 1.15vw, 1.05rem);
+    color: var(--cs-text);
     line-height: 1.7;
     padding-left: 1.5em;
   }
@@ -171,7 +160,7 @@
 
     p {
       font-size: 1rem;
-      color: color-mix(in srgb, var(--cs-foreground) 60%, transparent);
+      color: var(--cs-text-soft);
     }
 
     a {
@@ -207,7 +196,7 @@
     font-size: 0.95rem;
     padding: 0.6em 0.9em;
     border-bottom: 1px solid var(--cs-border);
-    color: color-mix(in srgb, var(--cs-foreground) 78%, transparent);
+    color: var(--cs-text);
   }
 
   tr:last-child td {
@@ -267,8 +256,8 @@
   }
 
   h1+p {
-    font-size: 12px;
-    color: var(--cs-mid);
+    font-size: clamp(1.1rem, 2vw, 1.5rem);
+    color: var(--cs-text-strong);
     margin-top: 0.75rem;
     margin-bottom: 0;
   }
@@ -286,8 +275,8 @@
   }
 
   h1+p {
-    font-size: 1.25rem;
-    color: var(--cs-mid);
+    font-size: clamp(1rem, 1.8vw, 1.25rem);
+    color: var(--cs-text);
     margin-top: 1.5rem;
   }
 }
@@ -312,7 +301,7 @@
   blockquote {
     p {
       font-size: clamp(1.5rem, 3.5vw, 2rem);
-      color: var(--cs-foreground);
+      color: var(--cs-text-strong);
       line-height: 1.35;
       margin: 0;
     }
@@ -382,7 +371,7 @@
     font-size: clamp(1rem, 1.8vw, 1.2rem);
     padding: 0.65em 0.9em;
     text-align: left;
-    color: color-mix(in srgb, var(--cs-foreground) 88%, transparent);
+    color: var(--cs-text);
   }
 
   /* Respect markdown column alignment markers */
@@ -439,8 +428,8 @@
 
 .slidev-page-number {
   font-family: 'IBM Plex Mono', monospace;
-  font-size: 10px;
-  color: var(--cs-dim);
+  font-size: clamp(0.72rem, 0.9vw, 0.8rem);
+  color: var(--cs-text);
 }
 
 .slidev-progress {
