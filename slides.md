@@ -4,769 +4,469 @@ layout: cover
 title: Gems are Overrated
 info: |
   // concrete syntax demo
-# apply UnoCSS classes to the current slide
 class: concrete-syntax
-# https://sli.dev/features/drawing
 drawings:
   persist: false
-# slide transition: https://sli.dev/guide/animations.html#slide-transitions
 transition: fade
-# enable MDC Syntax: https://sli.dev/features/mdc
 mdc: true
-# duration of the presentation
 duration: 35min
 ---
 
-# Welcome to Slidev
-
-Presentation slides for developers
-
-<div @click="$slidev.nav.next" class="mt-12 py-1" hover:bg="transparent">
-  Press Space for next page <carbon:arrow-right />
-</div>
-
-<div class="abs-br m-6 text-xl">
-  <button @click="$slidev.nav.openInEditor()" title="Open in Editor" class="slidev-icon-btn">
-    <carbon:edit />
-  </button>
-  <a href="https://github.com/slidevjs/slidev" target="_blank" class="slidev-icon-btn">
-    <carbon:logo-github />
-  </a>
-</div>
+# Gems Are Overrated
 
 ---
 
-# Story outline
+# Gems Are Great!
 
-- Disclaimer. I thought this conference was about hot takes. So far, it's been a bit mild. 
-- We're not going to do that. This is going to be spicy. I'm gonna throw some shade and ruffle some feathers. But, I do want to say this: 
-- I absolutely love the Ruby ecosystem, Ruby gems are literally what got me into ruby. I learned so much looking at other people's gems, and I, in no way shape or form, want to denigrate the work that other people have been doing, sometimes for years. I'm only here because of the work Gem maintainers have been doing, and I am incredibly thankful for that. Whatever comes next, my goal is to educate, inspire and entertain - and not to shit on other people's work. Even if it may seem so. With that being said. Story time. 
-
-- We need to add new feature to our application 
-- We need pagination because lists are long 
-- So we do what any responsible ruby developer does
-- We add a gem <animation of googling for ruby pagination gem> here
-- Easy. Now all we need to do is read the docs
-- And add a tiny weeny bit of code. 
-- And we have our pagination. Success
-- The end. Thank you for coming to my talk.
-
-- Had you for a second, didn't I. 
-- This is not the end, unfortunately. 
-- A couple of months later, you do a gem upgrade.
-- Uh oh, you get a warning. This gem doesn't support your ruby version.
-- So, I guess we have to update the gem.
-- We update the gem, and because we are responsible developers we run our tests.
-- Uh oh, our tests are failing
-- What the heck? Something must have changed in that gem, right?
-- Let's find out what changed, can't be too bad. 
-- Uh oh. <endless changelog here>
-- What the fuck, it's been like three months, you know?
-
-- At this point we have an epiphany. Maybe we don't need all that. Let's see what we actually need to support our feature.
-- <tiny code sample of pagination here>
-- Oh. Well. Huh. You tell me, was it worth adding a gem for that?
-
-- Alright, my name is hans
-- I'm Ruby freelancer from Vienna
-- Vienna.rb Meetup Organizer and also co-organizing RubyConf.at (which takes place in two weeks, tickets still available, cough cough)
-
-- And I want to talk about why gems are overrated
-
-- Let's start back at the beginning
-- and let's unpack why we use gems in the first place. 
-- It's because of Math. We do a calculation: How much effort is it to do this myself vs just pulling in a Gem? And of course, that depends on the gem, but in general
-- Adding a gem is easy, the good ones have setup commands and you can literally be done in 5 seconds. So if we do the math, comparing using gems vs rolling our own implementation often looks like this.
-- <graphic of comparing effort, low effort for using a gem vs building yourself>
-- Alas, like I said, if this was where the story ends, it's easy. But the story goes on.
-
-- And with time things change. Because gems, or using dependencies in general, bring risk.
-- They may or may not churn. SOme gems have a huge surface area and be updated constantly, and that means you have to deal with dependabot.
-- <long ass dependabot list image>
-- Or they may go unmaintained, which is the opposite of that. So you end up patching code, or hunting for alternatives for functionality that is deeply ingrained into your app.
-- There's also security updates and supply chain attacks, which are their own topic. Not to mention political scandals.
-- < image of rubygems drama stuff> 
-- Still boggles the mind. Anyway. 
-
-- All this can lead to the effort over time to actually look like this
-- <effort over time graphic here>
-
-- What about if we do it ourselves?
-- Does your own implementation churn and change? Only if you change it
-- Supply chain attacks? What do you mean, I AM THE SUPPLY CHAIN
-- Drama? Most certainly not.
-
-- <compared effort over time graphic>  
-
-- Of course that's not all there is. 
-- There are things that gems do that you simply can't do.
-- For one, there are marvelous things out there that you simply cannot properly implement yourself. 
-- Additinoally, security, CVEs are actually a good thing, right? Gems are open source, crowdsourced security. 
-- If you add bugs or security holes to your own code, nobody will fix it yourself.
-
-- So what should you do, use a gem or build it yourself?
-- How about option number three, intellectual property theft?
-- You wouldn't steal a car, but you most certain would steal a gem.
-- Who said you have to start from scratch?
-- We could fork stuff, but I'll be honest, I really like vendoring. 
-- But you know, vendoring as it stands has it's own problems.
-- The core issue of many gems that we haven't talked about is, that because they are useful, pepole want to add stuff to them
-- They make them configurable, and so on. Add new features, toggles/
-- <maybe LoC statistic of how much is overhead>?
-- It's precicely why they are so attractive. We might need that, right? No, YAGNI
-- So instead of forking or vendoring, what about this? 
-- You figure out what exactly you need. You read other gems and learning from them. Then surgically picking what you need. You vendor, but you're picky about it.
-- It's strictly better. You profit from maintainer experience. No supply chain attacks.
-- YOu might find that for what you need, you can boil it down to a single file.
-
-- <samples for copy pasta gems>
-
-- Let's revisit our cost calculation.
-- We said before there are things we can't do, but the library can? Now we can do, all we needed was some inspiration.
-- And the best thing, because we focused on what we actually need, both effort in the long run and immediate effort goes down dramatically.
-- <cost effort comparison again>
-
-- Now, actually, it gets even better.
-- Cant do a talk these days without shoe horning some AI into it, right?
-- With AI, the initial effort goes down, as does everything else.
-- It's all a prompt away
-- <Sample prompt here>
-
-- So eelephant in the room does that mean libraries are dead? Are our beloved gems dead?
-- Depends. Remember the reasons why we use gems in the first place, and if you'd hand roll em yourself.
-- Would I replace Devise with a hand rolled solution? Ehhh maybe not. What about bcrypt? Ehhhh Some things are just to sensitive to touch.
-- Here the cost/benefit/ratio is just off. 
-- But utility gems? Oh heck yeah.
-- Is this ethical? 
-- Some say no, e.g. https://railsdesigner.com/note/1772604707/
-
-
----
-
-# Ideas
-<!--
-- I love gems. It's what attracted me to the ecosystem
-- The first professional project I worked on used hundreds of gems
-- Why is clear, we use the work of other people because it's quicker.
-- We use client libraries because we don't want to write our own
-- We use device because we dont' want to write our own auth logic
-- But using gems has risks
-- Rubygems drama
-- Supply chain attacks
-- Adn not to mention churn
-- Ultimately, we hand of responsibility because it's easier
-- Adn that makes sense, you just don't have time
-
-- Using gem pro and con: 
-- Pro: 
-- Saves work
-- Security updates
-- Profit from maintainer experience
-
-- Con: 
-- The feared dependency updates and hunting for breakage
-- Supply chain attacks
-- You don't control it - upstreaming work not always possible
-
-- What even is the alternative? 
-- DIY of course!
-- You fork or you vendor
-- Or build something from scratch
-- The nice thing about DIY is you learn something
-- You have a focused thing that suits your problem
-- 
-- Why not DIY? 
-- AINT NOBODY GOT TIME FOR THAT
-
-- You know what's even better than DIY? Stealing.
-- Okay, imitation. 
--->
-
----
-
-# Resources
-
-- Nate link about copy pasta and AI https://x.com/i/status/2025322226455908433
-
----
-transition: fade-out
----
-
-# What is Slidev?
-
-Slidev is a slides maker and presenter designed for developers, consist of the following features
-
-- 📝 **Text-based** - focus on the content with Markdown, and then style them later
-- 🎨 **Themable** - themes can be shared and re-used as npm packages
-- 🧑‍💻 **Developer Friendly** - code highlighting, live coding with autocompletion
-- 🤹 **Interactive** - embed Vue components to enhance your expressions
-- 🎥 **Recording** - built-in recording and camera view
-- 📤 **Portable** - export to PDF, PPTX, PNGs, or even a hostable SPA
-- 🛠 **Hackable** - virtually anything that's possible on a webpage is possible in Slidev
-<br>
-<br>
-
-Read more about [Why Slidev?](https://sli.dev/guide/why)
-
-<!--
-You can have `style` tag in markdown to override the style for the current page.
-Learn more: https://sli.dev/features/slide-scope-style
--->
-
-
-<!--
-Here is another comment.
--->
-
----
-transition: slide-up
-level: 2
----
-
-# Navigation
-
-Hover on the bottom-left corner to see the navigation's controls panel, [learn more](https://sli.dev/guide/ui#navigation-bar)
-
-## Keyboard Shortcuts
-
-|                                                     |                             |
-| --------------------------------------------------- | --------------------------- |
-| <kbd>right</kbd> / <kbd>space</kbd>                 | next animation or slide     |
-| <kbd>left</kbd>  / <kbd>shift</kbd><kbd>space</kbd> | previous animation or slide |
-| <kbd>up</kbd>                                       | previous slide              |
-| <kbd>down</kbd>                                     | next slide                  |
-
-<!-- https://sli.dev/guide/animations.html#click-animation -->
-<img
-  v-click
-  class="absolute -bottom-9 -left-7 w-80 opacity-50"
-  src="https://sli.dev/assets/arrow-bottom-left.svg"
-  alt=""
-/>
-<p v-after class="absolute bottom-23 left-45 opacity-30 transform -rotate-10">Here!</p>
-
----
-layout: two-cols
-layoutClass: gap-16
----
-
-# Table of contents
-
-You can use the `Toc` component to generate a table of contents for your slides:
-
-```html
-<Toc minDepth="1" maxDepth="1" />
+```ruby [Gemfile]
+gem "pagy"
 ```
 
-The title will be inferred from your slide content, or you can override it with `title` and `level` in your frontmatter.
-
-::right::
-
-<Toc text-sm minDepth="1" maxDepth="2" />
-
----
-layout: image-right
-image: https://cover.sli.dev
----
-
-# Code
-
-Use code snippets and get the highlighting directly, and even types hover!
-
-```ts [filename-example.ts] {all|4|6|6-7|9|all} twoslash
-// TwoSlash enables TypeScript hover information
-// and errors in markdown code blocks
-// More at https://shiki.style/packages/twoslash
-import { computed, ref } from 'vue'
-
-const count = ref(0)
-const doubled = computed(() => count.value * 2)
-
-doubled.value = 2
+```ruby [app/controllers/products_controller.rb]
+def index
+  @pagy, @products = pagy(:offset, Product.all)
+end
 ```
 
-<arrow v-click="[4, 5]" x1="350" y1="310" x2="195" y2="342" color="#953" width="2" arrowSize="1" />
-
-<!-- This allow you to embed external code blocks -->
-<<< @/snippets/external.ts#snippet
-
-<!-- Footer -->
-
-[Learn more](https://sli.dev/features/line-highlighting)
-
-<!-- Inline style -->
-<style>
-.footnotes-sep {
-  @apply mt-5 opacity-10;
-}
-.footnotes {
-  @apply text-sm opacity-75;
-}
-.footnote-backref {
-  display: none;
-}
-</style>
-
+```erb [app/views/products/index.html.erb]
+<%== @pagy.series_nav %>
+```
 <!--
-Notes can also sync with clicks
-
-[click] This will be highlighted after the first click
-
-[click] Highlighted with `count = ref(0)`
-
-[click:3] Last click (skip two clicks)
+- Let's start with something we're all familiar with.
+- We need some small piece of functionality - some new feature, some new utility -in our Rails app. 
+- Let's say I need pagination. So naturally, we use a gem.
+- It's so easy, it just works.
+- And the best part is I added like three lines of code.
+- But of course, that's not all I did. 
+- I added a dependency, a maintenance story, a set of upstream decisions, a bunch of flexibility I probably don't need, and a future relationship with somebody else's code. 
+- I took on risk. And these days, third party dependencies are risky.
+- Sometimes that's a great trade. But increasingly, I don't think it's the best one, and I wanna talk about why.
 -->
 
 ---
-level: 2
+layout: image-left
+image: /avatar.webp
 ---
 
-# Shiki Magic Move
+# Hans Schnedlitz
 
-Powered by [shiki-magic-move](https://shiki-magic-move.netlify.app/), Slidev supports animations across multiple code snippets.
+Freelance Ruby Engineer 💎
 
-Add multiple code blocks and wrap them with <code>````md magic-move</code> (four backticks) to enable the magic move. For example:
+- Vienna.rb & RubyConf Austria 
+- [hansschnedlitz.com](https://hansschnedlitz.com) 🌐
+- [@hansschnedlitz](https://bsky.app/profile/hansschnedlitz.bsky.social)
 
-````md magic-move {lines: true}
-```ts {*|2|*}
-// step 1
-const author = reactive({
-  name: 'John Doe',
-  books: [
-    'Vue 2 - Advanced Guide',
-    'Vue 3 - Basic Guide',
-    'Vue 4 - The Mystery'
-  ]
-})
-```
+<!--
+My name is Hans, I'm a Ruby freelancer from Vienna. I organize Vienna.rb and co-organize RubyConf Austria.
+-->
 
-```ts {*|1-2|3-4|3-4,8}
-// step 2
-export default {
-  data() {
-    return {
-      author: {
-        name: 'John Doe',
-        books: [
-          'Vue 2 - Advanced Guide',
-          'Vue 3 - Basic Guide',
-          'Vue 4 - The Mystery'
-        ]
+---
+
+# Gems Are Efficient
+
+1. I have problem.
+2. Build or add gem?
+3. Gem is cheap & easy
+4. I add gem
+<!--
+- Let's track back. Why do we use gems?
+- For a long time, this was just straightforward economics.
+- I have a problem. I can build it myself, or I can add a gem. Building it myself is expensive. Adding a gem is cheap. So I add the gem.
+- Take pagination. You're building a Rails app, you need pagination, you reach for Pagy, Kaminari, whatever. A few lines later, the problem is solved.
+- And to be fair, for many years that was correct. The upfront cost of using a gem was tiny compared to the cost of learning the problem, implementing it well, and maintaining it yourself.
+-->
+
+---
+
+# The part we usually don't count
+
+<PhotoPile :images="[
+  './img/dependabots.png',
+  './img/supplychain.png',
+  './img/releases.png',
+  './img/readme.png',
+  './img/care.png',
+  './img/drama.png',
+]" />
+<!--
+The issue is not that gems are bad. The issue is that we tend to stop the calculation too early.
+
+A gem is not just setup cost, it's a long-term relationship.
+
+- Gems come with: 
+- Updates
+- API changes
+- Deprecations
+- Security advisories
+- Transitive dependencies
+- Unexpected breakage
+- Abstractions that don't quite fit
+- Upstream decisions
+-->
+
+---
+layout: fact
+---
+
+# YAGNI
+
+<!--
+- Most importantly, using a gem means accepting the decisions made by maintainers who are solving a broader problem than the one I actually have. 
+- A gem has to be useful to lots of people, in lots of apps, with lots of edge cases. My app usually does not. My app just needs one specific thing to work, in one specific context, with one set of constraints.
+- I don't need pagination as a reusable abstraction for the Ruby ecosystem. I need next page and previous page in this app. And if you look at it that way, the cost model changes.
+-->
+
+---
+
+
+<!--
+- The obvious response here is: fine, if the gem is too much, build it yourself. Or you know fork it.
+- Most of the time, I do not actually want to reinvent the problem from first principles. 
+- And neither do I want to inherit all the abstraction and ceremony that comes with maintainging a fork. 
+- When I pull in a gem , I want the gem author's understanding of the problem - just without all the extra machinery that comes with packaging it up for the whole ecosystem.
+-->
+
+---
+
+# Copy-Paste
+
+- Read the gem
+- Understand the useful part
+- Strip away the rest
+- Keep the smaller version locally
+
+<!--
+- That is the interesting middle ground.
+- Read the gem. Understand the part that solves the problem. Strip away the rest. Keep the smaller version locally.
+- Not install the gem.
+- Not reinvent it from scratch.
+- Distill the gem into something so small and useful I can copy-paste it to another application and it just works.
+-->
+
+---
+
+# One-Page Pagy
+
+```ruby [app/concerns/pagy.rb] {*}{lines:true}
+module Pagy
+  module Controller
+    protected
+
+    def pagy(scope, limit: 20)
+      page        = [params[:page].to_i, 1].max
+      count       = scope.count
+      total_pages = [(count.to_f / limit).ceil, 1].max
+      page        = [page, total_pages].min
+
+      meta = {
+        page:        page,
+        total_pages: total_pages,
+        prev_page:   page > 1,
+        next_page:   page < total_pages
       }
-    }
-  }
-}
+
+      [meta, scope.offset((page - 1) * limit).limit(limit)]
+    end
+  end
+
+  # ...
 ```
-
-```ts
-// step 3
-export default {
-  data: () => ({
-    author: {
-      name: 'John Doe',
-      books: [
-        'Vue 2 - Advanced Guide',
-        'Vue 3 - Basic Guide',
-        'Vue 4 - The Mystery'
-      ]
-    }
-  })
-}
-```
-
-Non-code blocks are ignored.
-
-```vue
-<!-- step 4 -->
-<script setup>
-const author = {
-  name: 'John Doe',
-  books: [
-    'Vue 2 - Advanced Guide',
-    'Vue 3 - Basic Guide',
-    'Vue 4 - The Mystery'
-  ]
-}
-</script>
-```
-````
-
----
-
-# Components
-
-<div grid="~ cols-2 gap-4">
-<div>
-
-You can use Vue components directly inside your slides.
-
-We have provided a few built-in components like `<Tweet/>` and `<Youtube/>` that you can use directly. And adding your custom components is also super easy.
-
-```html
-<Counter :count="10" />
-```
-
-<!-- ./components/Counter.vue -->
-<Counter :count="10" m="t-4" />
-
-Check out [the guides](https://sli.dev/builtin/components.html) for more.
-
-</div>
-<div>
-
-```html
-<Tweet id="1390115482657726468" />
-```
-
-<Tweet id="1390115482657726468" scale="0.65" />
-
-</div>
-</div>
 
 <!--
-Presenter note with **bold**, *italic*, and ~~striked~~ text.
-
-Also, HTML elements are valid:
-<div class="flex w-full">
-  <span style="flex-grow: 1;">Left content</span>
-  <span>Right content</span>
-</div>
+- Pagination is a good example because the gap between what the gem does and what I may actually need is often huge.
+- A gem has to support many use cases, configuration options, adapters, styles, conventions, and edge cases. My app may just need a tiny subset of that.
+- So the question is not "am I smart enough to write pagination?" The question is: how much of pagination do I actually need to own in this app?
+- Very often, the answer is: not much.
+- A reduced version might fit into a single helper or concern.
+- The point of this example is not that pagination is easy. The point is that the useful part of the gem, for one app, may be dramatically smaller than the gem itself.
+- That is the gap I'm interested in.
+- I don't necessarily want to invent the solution from scratch. I want to borrow the right ideas and throw away the rest.
 -->
 
 ---
-class: px-20
----
 
-# Themes
-
-Slidev comes with powerful theming support. Themes can provide styles, layouts, components, or even configurations for tools. Switching between themes by just **one edit** in your frontmatter:
-
-<div grid="~ cols-2 gap-2" m="t-2">
-
-```yaml
----
-theme: default
----
-```
-
-```yaml
----
-theme: seriph
----
-```
-
-<img border="rounded" src="https://github.com/slidevjs/themes/blob/main/screenshots/theme-default/01.png?raw=true" alt="">
-
-<img border="rounded" src="https://github.com/slidevjs/themes/blob/main/screenshots/theme-seriph/01.png?raw=true" alt="">
-
-</div>
-
-Read more about [How to use a theme](https://sli.dev/guide/theme-addon#use-theme) and
-check out the [Awesome Themes Gallery](https://sli.dev/resources/theme-gallery).
-
----
-
-# Clicks Animations
-
-You can add `v-click` to elements to add a click animation.
-
-<div v-click>
-
-This shows up when you click the slide:
-
-```html
-<div v-click>This shows up when you click the slide.</div>
-```
-
-</div>
-
-<br>
-
-<v-click>
-
-The <span v-mark.red="3"><code>v-mark</code> directive</span>
-also allows you to add
-<span v-mark.circle.orange="4">inline marks</span>
-, powered by [Rough Notation](https://roughnotation.com/):
-
-```html
-<span v-mark.underline.orange>inline markers</span>
-```
-
-</v-click>
-
-<div mt-20 v-click>
-
-[Learn more](https://sli.dev/guide/animations#click-animation)
-
-</div>
-
----
-
-# Motions
-
-Motion animations are powered by [@vueuse/motion](https://motion.vueuse.org/), triggered by `v-motion` directive.
-
-```html
-<div
-  v-motion
-  :initial="{ x: -80 }"
-  :enter="{ x: 0 }"
-  :click-3="{ x: 80 }"
-  :leave="{ x: 1000 }"
->
-  Slidev
-</div>
-```
-
-<div class="w-60 relative">
-  <div class="relative w-40 h-40">
-    <img
-      v-motion
-      :initial="{ x: 800, y: -100, scale: 1.5, rotate: -50 }"
-      :enter="final"
-      class="absolute inset-0"
-      src="https://sli.dev/logo-square.png"
-      alt=""
-    />
-    <img
-      v-motion
-      :initial="{ y: 500, x: -100, scale: 2 }"
-      :enter="final"
-      class="absolute inset-0"
-      src="https://sli.dev/logo-circle.png"
-      alt=""
-    />
-    <img
-      v-motion
-      :initial="{ x: 600, y: 400, scale: 2, rotate: 100 }"
-      :enter="final"
-      class="absolute inset-0"
-      src="https://sli.dev/logo-triangle.png"
-      alt=""
-    />
-  </div>
-
-  <div
-    class="text-5xl absolute top-14 left-40 text-[#2B90B6] -z-1"
-    v-motion
-    :initial="{ x: -80, opacity: 0}"
-    :enter="{ x: 0, opacity: 1, transition: { delay: 2000, duration: 1000 } }">
-    Slidev
-  </div>
-</div>
-
-<!-- vue script setup scripts can be directly used in markdown, and will only affects current page -->
-<script setup lang="ts">
-const final = {
-  x: 0,
-  y: 0,
-  rotate: 0,
-  scale: 1,
-  transition: {
-    type: 'spring',
-    damping: 10,
-    stiffness: 20,
-    mass: 2
-  }
-}
-</script>
-
-<div
-  v-motion
-  :initial="{ x:35, y: 30, opacity: 0}"
-  :enter="{ y: 0, opacity: 1, transition: { delay: 3500 } }">
-
-[Learn more](https://sli.dev/guide/animations.html#motion)
-
-</div>
-
----
-
-# $\LaTeX$
-
-$\LaTeX$ is supported out-of-box. Powered by [$\KaTeX$](https://katex.org/).
-
-<div h-3 />
-
-Inline $\sqrt{3x-1}+(1+x)^2$
-
-Block
-$$ {1|3|all}
-\begin{aligned}
-\nabla \cdot \vec{E} &= \frac{\rho}{\varepsilon_0} \\
-\nabla \cdot \vec{B} &= 0 \\
-\nabla \times \vec{E} &= -\frac{\partial\vec{B}}{\partial t} \\
-\nabla \times \vec{B} &= \mu_0\vec{J} + \mu_0\varepsilon_0\frac{\partial\vec{E}}{\partial t}
-\end{aligned}
-$$
-
-[Learn more](https://sli.dev/features/latex)
-
----
-
-# Diagrams
-
-You can create diagrams / graphs from textual descriptions, directly in your Markdown.
-
-<div class="grid grid-cols-4 gap-5 pt-4 -mb-6">
-
-```mermaid {scale: 0.5, alt: 'A simple sequence diagram'}
-sequenceDiagram
-    Alice->John: Hello John, how are you?
-    Note over Alice,John: A typical interaction
-```
-
-```mermaid {theme: 'neutral', scale: 0.8}
-graph TD
-B[Text] --> C{Decision}
-C -->|One| D[Result 1]
-C -->|Two| E[Result 2]
-```
-
-```mermaid
-mindmap
-  root((mindmap))
-    Origins
-      Long history
-      ::icon(fa fa-book)
-      Popularisation
-        British popular psychology author Tony Buzan
-    Research
-      On effectiveness<br/>and features
-      On Automatic creation
-        Uses
-            Creative techniques
-            Strategic planning
-            Argument mapping
-    Tools
-      Pen and paper
-      Mermaid
-```
-
-```plantuml {scale: 0.7}
-@startuml
-
-package "Some Group" {
-  HTTP - [First Component]
-  [Another Component]
-}
-
-node "Other Groups" {
-  FTP - [Second Component]
-  [First Component] --> FTP
-}
-
-cloud {
-  [Example 1]
-}
-
-database "MySql" {
-  folder "This is my folder" {
-    [Folder 3]
-  }
-  frame "Foo" {
-    [Frame 4]
-  }
-}
-
-[Another Component] --> [Example 1]
-[Example 1] --> [Folder 3]
-[Folder 3] --> [Frame 4]
-
-@enduml
-```
-
-</div>
-
-Learn more: [Mermaid Diagrams](https://sli.dev/features/mermaid) and [PlantUML Diagrams](https://sli.dev/features/plantuml)
-
----
-foo: bar
-dragPos:
-  square: 691,32,167,_,-16
----
-
-# Draggable Elements
-
-Double-click on the draggable elements to edit their positions.
-
-<br>
-
-###### Directive Usage
-
-```md
-<img v-drag="'square'" src="https://sli.dev/logo.png">
-```
-
-<br>
-
-###### Component Usage
-
-```md
-<v-drag text-3xl>
-  <div class="i-carbon:arrow-up" />
-  Use the `v-drag` component to have a draggable container!
-</v-drag>
-```
-
-<v-drag pos="663,206,261,_,-15">
-  <div text-center text-3xl border border-main rounded>
-    Double-click me!
-  </div>
-</v-drag>
-
-<img v-drag="'square'" src="https://sli.dev/logo.png">
-
-###### Draggable Arrow
-
-```md
-<v-drag-arrow two-way />
-```
-
-<v-drag-arrow pos="67,452,253,46" two-way op70 />
-
----
-src: ./pages/imported-slides.md
-hide: false
----
-
----
-
-# Monaco Editor
-
-Slidev provides built-in Monaco Editor support.
-
-Add `{monaco}` to the code block to turn it into an editor:
-
-```ts {monaco}
-import { ref } from 'vue'
-import { emptyArray } from './external'
-
-const arr = ref(emptyArray(10))
-```
-
-Use `{monaco-run}` to create an editor that can execute the code directly in the slide:
-
-```ts {monaco-run}
-import { version } from 'vue'
-import { emptyArray, sayHello } from './external'
-
-sayHello()
-console.log(`vue ${version}`)
-console.log(emptyArray<number>(10).reduce(fib => [...fib, fib.at(-1)! + fib.at(-2)!], [1, 1]))
+```ruby [app/concerns/pagy.rb] {*}{lines:true,startLine:23}
+  # ...
+
+  module Helper
+    def pagy_nav(pagy)
+      return unless pagy[:total_pages] > 1
+
+      html = ""
+      html << link_to("Previous", url_for(page: pagy[:page] - 1)) if pagy[:prev_page]
+      html << content_tag(:span, "Page #{pagy[:page]} of #{pagy[:total_pages]}")
+      html << link_to("Next", url_for(page: pagy[:page] + 1)) if pagy[:next_page]
+      html.html_safe
+    end
+  end
+end
 ```
 
 ---
 layout: center
-class: text-center
 ---
 
-# Learn More
 
-[Documentation](https://sli.dev) · [GitHub](https://github.com/slidevjs/slidev) · [Showcases](https://sli.dev/resources/showcases)
+| Gem  | Lines of code | Releases | Issues / month |
+|---|---:|---:|---:|
+| Pagy | 2,835 | 85 | ~9 |
+| Copy-Pasta Pagy | 53 | 1 | 0 |
 
-<PoweredBySlidev mt-10 />
 
-Resources:
+<!--
+- These are real numbers.
+- pagy is a great gem. It has 85 releases because it solves a broad problem well.
+- But if all I need is next and previous, I don't inherit any of that surface area.
+- 53 lines. One release. No upstream issues to track.
+- That is what distillation looks like in practice.
+-->
 
+---
+
+# Lograge
+
+```ruby [Gemfile]
+gem "lograge"
+```
+
+```ruby [config/initializers/lograge.rb]
+Rails.application.configure do
+  config.lograge.enabled = true
+end
+```
+```
+method=GET path=/products format=html controller=ProductsController action=index status=200
+```
+
+<!--
+- Another example. Rails request logs are noisy by default — you get half a dozen lines per request, most of it noise.
+- Lograge collapses that into a single structured line.
+- Again: three lines, problem solved. But same story as before.
+-->
+
+---
+
+# Copy-Paste Lograge
+
+```ruby {*}{lines:true} [config/initializers/lograge.rb]
+class Lograge
+  module RackLogger
+    private def logger = Object.new.tap { |o| o.define_singleton_method(:info) {} }
+  end
+
+  class Subscriber < ActiveSupport::LogSubscriber
+    def process_action(event)
+      payload = event.payload
+      status  = payload[:status] ||
+                ActionDispatch::ExceptionWrapper.status_code_for_exception(payload[:exception].first)
+
+      ActionController::Base.logger.info do
+        { method: payload[:method], path: payload[:path]&.split("?")&.first,
+          format: payload[:format], controller: payload[:controller],
+          action: payload[:action], status: }.compact.map { |k, v| "#{k}=#{v}" }.join(" ")
+      end
+    end
+  end
+
+  #...
+```
+
+<!--
+- Here's the distilled version.
+- The Subscriber class is the core — one method, one hash, one line of output.
+- The setup machinery has to stay — that's what actually replaces Rails' default log subscribers.
+- But the feature code is tiny.
+-->
+
+---
+
+```ruby {lines:true,startLine:12} [config/initializers/lograge.rb]
+  # ...
+
+  class << self
+    def setup
+      Rails::Rack::Logger.prepend(RackLogger)
+      require "action_view/log_subscriber"
+      require "action_controller/log_subscriber"
+      ActiveSupport::LogSubscriber.log_subscribers.each do |subscriber|
+        case subscriber
+        when ActionView::LogSubscriber        then unsubscribe(:action_view, subscriber)
+        when ActionController::LogSubscriber  then unsubscribe(:action_controller, subscriber)
+        end
+      end
+      Subscriber.attach_to :action_controller
+    end
+
+    def unsubscribe(component, subscriber)
+      events = subscriber.public_methods(false).reject { |m| m.to_s == "call" }
+      events.each do |event|
+        ActiveSupport::Notifications.notifier.all_listeners_for("#{event}.#{component}").each do |listener|
+          ActiveSupport::Notifications.unsubscribe(listener) if listener.instance_variable_get(:@delegate).class.name.start_with?("#{component.to_s.classify}::")
+        end
+      end
+    end
+  end
+end
+
+Lograge.setup
+```
+
+---
+layout: center
+---
+
+
+| Gem | Lines of code | Releases | Issues / month |
+|---|---:|---:|---:|
+| Lograge | 863 | 39 | ~2 |
+| Copy-Pasta Lograge | 55 | 1 | 0 |
+
+
+---
+
+# The tradeoff more clearly
+
+
+| Approach | Upfront cost | Long-term cost | Control | Fit |
+|---|---:|---:|---:|---:|
+| Add gem | Low | Medium/High | Low | General |
+| Build from scratch | High | Low | High | Exact |
+| Distill from gem | Medium | Low | High | Exact |
+
+<!--
+Once you look at it this way, there are really three options.
+
+I can use the gem as-is. That wins on upfront convenience, but I inherit the full maintenance story, the extra surface area, and all the upstream priorities.
+
+I can build the thing from scratch. That gives me total control, but it is the most expensive option upfront and I lose the benefit of the gem author's experience.
+
+Or I can do the interesting thing: keep the expertise, throw away the excess, and own the smaller version locally.
+
+That is the tradeoff in one sentence. When I add a gem, what I often really want is not the whole packaged abstraction. I want the maintainer's understanding of the problem.
+
+That is why this is not really an argument about purity. It is an argument about economics.
+
+In a lot of cases, the sweet spot is not dependency or reinvention. It is distillation.
+-->
+
+---
+
+# Why Now?
+
+<!--
+- None of this is entirely new.
+- Vendoring is old. Forking is old. Copy-pasting code is as old as software.
+- What changed is not the idea. What changed is the cost of understanding and adaptation.
+- It has become much cheaper to look at a library, understand its architecture, identify the parts that matter, and reshape them into something project-specific.
+- AI is part of that shift. Not because it removes the need for judgment, but because it removes a lot of the drudgery. It can help inspect the code, explain the internals, identify the core pieces, and produce a reduced version that I can then verify and own.
+- The judgment still matters. I still have to decide whether a gem is a good candidate for this treatment, whether I understand the result, and whether the reduced version is actually safe to own. But the upfront cost of adaptation has dropped a lot, while the cost of dependency ownership has stayed more or less the same.
+- That moves the tradeoff.
+-->
+
+---
+
+> Read the [gem-name] gem: https://github.com/Rails-Designer/rails_icons. Copy the approach the gem takes to [do something] and boil that functionality down to a single file.
+
+# Why not just fork or vendor?
+
+- Forking keeps the architecture
+- Vendoring keeps a lot of code
+- Distilling keeps the essence
+
+<!--
+Forking and vendoring are related ideas, but they are not quite what I mean.
+
+If I fork a gem, I gain control, but I still keep the whole architecture, all the assumptions, and most of the maintenance burden. I am still living inside somebody else's design.
+
+If I vendor a gem, I bring the source into my repo and edit it locally. That helps, but I still end up carrying around a lot of code I probably don't need.
+
+Distilling is different. The point is not to preserve the library and merely relocate it. The point is to extract the essence of what solves my problem and leave the rest behind.
+
+That is also why the tradeoff is different from building from scratch. I am not refusing to learn from the gem. Quite the opposite. I am explicitly trying to benefit from the author's expertise while declining to take on the full packaged abstraction.
+
+That is why distilling can land in a better place than either forking, vendoring, or starting from zero.
+-->
+
+---
+
+# Good candidates and bad candidates
+
+- Good: utilities, UI behavior, helpers, wrappers, pagination
+- Bad: auth, crypto, deeply stateful systems, protocol-heavy libs
+- Heuristic: can I fully read and understand it in one sitting?
+
+<!--
+This approach is obviously not for everything.
+
+It works best when the dependency can be reduced to something small, local, and understandable. Utility gems are good candidates. UI behavior is often a good candidate. Small helpers, formatters, adapters, wrappers, icon helpers, pagination - these are all plausible.
+
+There are also very obvious cases where I would not do this. Authentication. Cryptography. Deeply stateful systems. Protocol-heavy libraries. Anything where the whole point of using a well-established dependency is that many eyes have already looked for bugs and edge cases.
+
+My rule of thumb is simple.
+
+If I can boil it down to a few files I can fully read and understand in one sitting, it is a candidate.
+If I would need a week to understand it, I should probably keep the dependency.
+-->
+
+---
+
+# The ecosystem objection
+
+- Does this weaken the ecosystem?
+- What belongs upstream?
+- Distillation is often subtraction
+
+<!--
+There is an obvious critique here, which is that this sounds a bit parasitic.
+
+If everybody starts treating gems as source material and nobody contributes back, the ecosystem gets weaker. The whole approach depends on strong libraries existing in the first place.
+
+I think that concern is real.
+
+At the same time, in many of these cases, what I am doing locally is not something that belongs upstream. I am removing features, narrowing scope, deleting abstractions, and adapting things to one application's needs. That is useful to me, but not necessarily useful to the gem.
+
+If I find a real bug, discover a missing edge case, or make a genuinely reusable improvement, I should absolutely contribute that back. But the default operation here is usually subtraction rather than addition.
+
+So I don't think this replaces open source contribution. I think it changes what role open source plays in the workflow.
+-->
+
+---
+
+# Bigger picture
+
+- Gems as dependencies
+- Gems as blueprints
+- Gems as reference implementations
+
+<!--
+That may be the larger shift here.
+
+Maybe libraries become less valuable as things I install unchanged and more valuable as reference implementations, blueprints, and collections of hard-won ideas I can adapt to my own app.
+
+That is not the end of gems. And it is not the end of open source. If anything, it depends on the ecosystem continuing to produce excellent libraries.
+
+But it might be a shift in how I use them.
+
+Less as permanent runtime dependencies.
+More as source material I can study, reshape, and own.
+-->
+
+---
+
+# Ending
+
+- Not "gems are bad"
+- Not "rewrite everything"
+- Better middle ground
+- Own the smaller version of the idea
+
+<!--
+So the point is not that gems are bad.
+And it is not that everything should be rewritten in-house.
+
+The point is that the best alternative to a gem is often not building from scratch. It is owning a smaller version of the gem's core idea.
+
+Gems are still valuable. I just increasingly think of them less as permanent tenants in my app and more as excellent blueprints.
+
+That middle ground - between dependency and reinvention - is the part I find most interesting.
+-->

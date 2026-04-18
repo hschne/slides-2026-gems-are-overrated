@@ -8,7 +8,7 @@
     </div>
     <!-- Footer label -->
     <div class="cover-footer">
-      <span class="cover-footer-label">// concrete syntax</span>
+      <span class="cover-footer-label">Hans Schnedlitz, Balkan Ruby 2026</span>
     </div>
   </div>
 </template>
