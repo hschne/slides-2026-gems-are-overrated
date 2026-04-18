@@ -25,15 +25,24 @@ layout: fact
 layout: quote
 ---
 
-> Read the source for https://github​.com/... Copy the approach the gem takes to [do something] and boil that functionality down to a single file.
+> Read the source for https://github​.com/... Copy the approach the gem takes to do ... and boil that functionality down to a single file.
 
 ---
+layout: full
+---
 
-# Why not just fork or vendor?
+<script setup lang="ts">
+const alternatives = [
+  { icon: 'git-fork', color: '#A78BFA' },
+  { icon: 'package', color: '#F59E0B' },
+  { icon: 'copy', color: '#34D399' },
+]
+</script>
 
-- Forking keeps the architecture
-- Vendoring keeps a lot of code
-- Distilling keeps the essence
+<div class="h-full flex flex-col items-center justify-center gap-8 py-6">
+  <Versus :items="alternatives" />
+  <p class="text-xl opacity-85">Fork · Vendor · Copy Paste</p>
+</div>
 
 <!--
 Forking and vendoring are related ideas, but they are not quite what I mean.

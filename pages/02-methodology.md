@@ -1,5 +1,11 @@
+<script setup lang="ts">
+const methodologyItems = [
+  { icon: 'hammer', color: '#F69D50' },
+  { icon: 'gem', color: '#6CB6FF' },
+]
+</script>
 
-<Versus />
+<Versus :items="methodologyItems" separator="vs" />
 
 <!--
 - Let's track back. Why do we use gems?
