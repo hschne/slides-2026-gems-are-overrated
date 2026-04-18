@@ -351,9 +351,7 @@
   }
 
   .mermaid svg {
-    width: 100% !important;
-    height: 78vh !important;
-    background: transparent !important;
+    max-width: none !important;
   }
 }
 
@@ -448,10 +446,4 @@
 .slidev-progress {
   background-color: var(--cs-primary);
   height: 1px;
-}
-
-/* Mermaid diagrams should blend into the theme by default */
-.slidev-layout .mermaid,
-.slidev-layout .mermaid svg {
-  background: transparent !important;
 }

@@ -4,6 +4,20 @@ import { defineMermaidSetup } from '@slidev/types'
 export default defineMermaidSetup((): Partial<MermaidConfig> => {
   return {
     theme: 'base',
+    xyChart: {
+      useMaxWidth: false,
+      width: 1400,
+      height: 760,
+      titleFontSize: 28,
+      xAxis: {
+        labelFontSize: 18,
+        titleFontSize: 20,
+      },
+      yAxis: {
+        labelFontSize: 18,
+        titleFontSize: 20,
+      },
+    },
     themeVariables: {
       fontFamily: 'IBM Plex Mono',
       background: 'transparent',
@@ -25,7 +39,7 @@ export default defineMermaidSetup((): Partial<MermaidConfig> => {
         yAxisLabelColor: '#DEDEDE',
         yAxisTickColor: '#DEDEDE',
         yAxisLineColor: '#DEDEDE',
-        plotColorPalette: '#6CB6FF, #DCBDFB, #96D0FF, #B083F0',
+        plotColorPalette: '#6CB6FF, #F69D50, #96D0FF, #FFB86B',
       },
     },
   }

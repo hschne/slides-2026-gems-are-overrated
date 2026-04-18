@@ -1,10 +1,6 @@
 
-# Gems Are Efficient
+<Versus />
 
-1. I have problem.
-2. Build or add gem?
-3. Gem is cheap & easy
-4. I add gem
 <!--
 - Let's track back. Why do we use gems?
 - For a long time, this was just straightforward economics.
@@ -27,35 +23,33 @@ layout: fact
 -->
 
 ---
+layout: full
+class: cost-curve
+---
 
-# Build vs Buy
+```mermaid
+%%{init: {
+  "xyChart": {
+    "xAxis": { "showLabel": false },
+    "yAxis": { "showLabel": false }
+  }
+}}%%
+xychart
+  x-axis "Time" 
+  y-axis "Money" 0 --> 80
+  line [3,  8, 3, 4, 3, 3, 5, 6, 12, 2, 3, 7, 30, 7, 3, 8, 3]
+  line [3, 22, 70, 54, 4, 3, 12, 3, 3, 2, 21, 15, 3, 3, 10, 5, 5]
+```
+
+<div class="text-center text-sm mt-3 opacity-90">
+  <span style="color:#6CB6FF">■ Gem</span>
+  <span class="mx-4 opacity-60">vs</span>
+  <span style="color:#F69D50">■ Custom</span>
+</div>
 
 <!--
 - The obvious response here is: fine, if the gem is too much, build it yourself. Or you know fork it.
 - Most of the time, I do not actually want to reinvent the problem from first principles. 
 - And neither do I want to inherit all the abstraction and ceremony that comes with maintainging a fork. 
 - When I pull in a gem , I want the gem author's understanding of the problem - just without all the extra machinery that comes with packaging it up for the whole ecosystem.
--->
-
----
-layout: full
-class: cost-curve
----
-
-```mermaid
-xychart-beta
-  title "Ownership cost over time"
-  x-axis [Month1, Month2, Month3, Month4, Month5, Month6]
-  y-axis "Relative cost" 0 --> 100
-  line [18, 24, 31, 41, 53, 66]
-  line [74, 63, 55, 49, 45, 43]
-```
-
-<!--
-- That is the interesting middle ground.
-- I wanted a visual for this: two cost curves over time.
-- Gems start cheap but often climb as maintenance and mismatch accumulate.
-- In-house starts expensive, then flattens as fit and control improve.
-- Copy-pasta distillation aims between those two extremes.
-- Read the gem. Understand the part that solves the problem. Strip away the rest. Keep the smaller version locally.
 -->
