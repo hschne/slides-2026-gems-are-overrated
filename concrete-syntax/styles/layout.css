@@ -167,12 +167,20 @@
     padding-left: 1rem;
     margin-left: 0;
     background: transparent;
-    font-style: italic;
     border-radius: 0;
 
     p {
-      font-size: 11px;
+      font-size: 1rem;
       color: color-mix(in srgb, var(--cs-foreground) 60%, transparent);
+    }
+
+    a {
+      font-size: 1rem;
+      color: inherit;
+      border-bottom: 0;
+      text-decoration: none;
+      pointer-events: none;
+      cursor: text;
     }
   }
 
@@ -277,11 +285,48 @@
     letter-spacing: -0.02em;
   }
 
-  h1 + p {
+  h1+p {
     font-size: 1.25rem;
     color: var(--cs-mid);
     margin-top: 1.5rem;
   }
+}
+
+.slidev-layout.quote {
+  @apply h-full grid;
+  padding: 3rem 4rem;
+
+  .my-auto {
+    width: min(100%, 980px);
+    margin: auto;
+  }
+
+  h1 {
+    font-size: clamp(2.2rem, 5.5vw, 4rem);
+    font-weight: 800;
+    line-height: 1.08;
+    border: 0;
+    margin-bottom: 1rem;
+  }
+
+  blockquote {
+    p {
+      font-size: clamp(1.5rem, 3.5vw, 2rem);
+      color: var(--cs-foreground);
+      line-height: 1.35;
+      margin: 0;
+    }
+
+    a {
+      font-size: clamp(1.5rem, 3.5vw, 2rem);
+      color: inherit;
+      border-bottom: 0;
+      text-decoration: none;
+      pointer-events: none;
+      cursor: text;
+    }
+  }
+
 }
 
 .slidev-layout.default {
@@ -296,20 +341,66 @@
   }
 }
 
-/* Per-slide variant for emphasized data tables */
-.slidev-layout.table-xl {
+.slidev-layout.full.cost-curve {
+  @apply h-full w-full flex flex-col justify-center;
+  padding: 1.5rem 2rem;
+
+  .mermaid {
+    width: min(100%, 1280px);
+    margin: 0 auto;
+  }
+
+  .mermaid svg {
+    width: 100% !important;
+    height: 78vh !important;
+    background: transparent !important;
+  }
+}
+
+/* Emphasized tables when a fact slide contains a table */
+.slidev-layout.fact:has(table) {
+  @apply items-stretch;
+
+  h1 {
+    font-size: clamp(2.25rem, 5vw, 3.25rem);
+    line-height: 1;
+    margin-bottom: 1.25rem;
+    letter-spacing: 0.01em;
+  }
+
   table {
-    font-size: 1.2rem;
+    width: min(100%, 1100px);
+    margin: 0 auto;
+    font-size: clamp(1rem, 1.8vw, 1.2rem);
   }
 
   th {
-    font-size: 1.05rem;
-    padding: 0.75em 1em;
+    font-size: clamp(1.2rem, 2.4vw, 1.55rem);
+    padding: 0.7em 0.9em;
+    text-align: left;
   }
 
   td {
-    font-size: 1.15rem;
-    padding: 0.75em 1em;
+    font-size: clamp(1rem, 1.8vw, 1.2rem);
+    padding: 0.65em 0.9em;
+    text-align: left;
+    color: color-mix(in srgb, var(--cs-foreground) 88%, transparent);
+  }
+
+  /* Respect markdown column alignment markers */
+  th[align='right'],
+  td[align='right'] {
+    text-align: right;
+  }
+
+  th[align='center'],
+  td[align='center'] {
+    text-align: center;
+  }
+
+  /* Keep first column as strong row labels */
+  tbody td:first-child {
+    font-weight: 500;
   }
 }
 
@@ -357,4 +448,10 @@
 .slidev-progress {
   background-color: var(--cs-primary);
   height: 1px;
+}
+
+/* Mermaid diagrams should blend into the theme by default */
+.slidev-layout .mermaid,
+.slidev-layout .mermaid svg {
+  background: transparent !important;
 }
