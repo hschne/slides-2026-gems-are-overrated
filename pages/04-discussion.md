@@ -16,10 +16,10 @@ layout: fact
 
 ---
 
-<div class="h-full flex flex-col items-center justify-center gap-4 py-6">
+<figure class="h-full flex flex-col items-center justify-center gap-4 py-6">
   <img src="../img/friendly-ai-overlords.png" alt="Friendly AI overlords" class="max-h-[60vh] w-auto object-contain rounded" />
   <figcaption class="text-sm">"Create an image depicting our friendly AI overlords"</figcaption>
-</div>
+</figure>
 
 ---
 layout: quote
@@ -59,12 +59,10 @@ That is why distilling can land in a better place than either forking, vendoring
 -->
 
 ---
+layout: image
+image: ./bcrypt.png
+---
 
-# Good candidates and bad candidates
-
-- Good: utilities, UI behavior, helpers, wrappers, pagination
-- Bad: auth, crypto, deeply stateful systems, protocol-heavy libs
-- Heuristic: can I fully read and understand it in one sitting?
 
 <!--
 This approach is obviously not for everything.
@@ -81,11 +79,7 @@ If I would need a week to understand it, I should probably keep the dependency.
 
 ---
 
-# The ecosystem objection
-
-- Does this weaken the ecosystem?
-- What belongs upstream?
-- Distillation is often subtraction
+# What About the Ecosystem?
 
 <!--
 There is an obvious critique here, which is that this sounds a bit parasitic.
@@ -102,12 +96,10 @@ So I don't think this replaces open source contribution. I think it changes what
 -->
 
 ---
+layout: image
+image: ./blueprint.png
+---
 
-# Bigger picture
-
-- Gems as dependencies
-- Gems as blueprints
-- Gems as reference implementations
 
 <!--
 That may be the larger shift here.

@@ -203,6 +203,10 @@
     border-bottom: none;
   }
 
+  tr:last-child th {
+    border-bottom: none;
+  }
+
   /* kbd */
   kbd {
     font-size: 10px;
@@ -317,6 +321,8 @@
   }
 
 }
+
+.slidev-layout.comparison-slide {}
 
 .slidev-layout.default {
   padding: 2rem 3rem;

@@ -55,14 +55,14 @@ end
 
 ---
 layout: fact
+class: comparison-slide
 ---
 
-
-|   | Lines of code | Releases | Issues / month |
-|---|---:|---:|---:|
-| Pagy | 2835 | 85 | ~9 |
-| Copy-Pasta Pagy | 53 | 1 | 0 |
-
+|  | Pagy | Copy-Pasta Pagy |
+|---|---:|---:|
+| Lines of code | 2835 | 53 |
+| Releases | 85 | 1 |
+| Issues / month | ~9 | 0 |
 
 <!--
 - These are real numbers.
@@ -164,10 +164,11 @@ layout: fact
 ---
 
 
-|  | Lines of code | Releases | Issues / month |
-|---|---:|---:|---:|
-| Pundit | 1124 | 47 | ~3 |
-| Copy-Pasta Pundit | 30 | 1 | 0 |
+|  | Pundit | Copy-Pasta Pundit |
+|---|---:|---:|
+| Lines of code | 1124 | 30 |
+| Releases | 47 | 1 |
+| Issues / month | ~3 | 0 |
 
 
 ---
@@ -264,7 +265,8 @@ layout: fact
 ---
 
 
-|  | Lines of code | Releases | Issues / month |
-|---|---:|---:|---:|
-| Lograge | 863 | 39 | ~2 |
-| Copy-Pasta Lograge | 55 | 1 | 0 |
+|  | Lograge | Copy-Pasta Lograge |
+|---|---:|---:|
+| Lines of code | 863 | 55 |
+| Releases | 39 | 1 |
+| Issues / month | ~2 | 0 |
