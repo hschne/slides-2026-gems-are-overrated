@@ -15,12 +15,11 @@ end
 ```
 
 <!--
-- Let's start with something we're all familiar with.
-- We need some small piece of functionality - some new feature, some new utility -in our Rails app. 
-- Let's say I need pagination. So naturally, we use a gem.
-- It's so easy, it just works.
-- And the best part is I added like three lines of code.
-- But of course, that's not all I did.
+- Let's start with something we're all familiar with, adding some gems.
+- Let's say we need some small piece of functionality - some new feature, some new utility -in our Rails app. 
+- Here I decided to pick on pagy, because it's such a nice example. We need pagination, so obviously we add the pagy gem.
+- And that's all there is to it. We literally added three lines of code it works and that's all there is to it.
+- Or is it?
 -->
 
 ---
@@ -37,23 +36,14 @@ end
 ]" />
 
 <!--
-- The issue is not that gems are bad. The issue is that we tend to stop the calculation too early.
-
-A gem is not just setup cost, it's a long-term relationship.
-
-- Gems come with: 
-- Updates
-- API changes
-- Deprecations
-- Security advisories
-- Transitive dependencies
-- Unexpected breakage
-- Abstractions that don't quite fit
-- Upstream decisions
-
-- I added a dependency, a maintenance story, a set of upstream decisions, a bunch of flexibility I probably don't need, and a future relationship with somebody else's code. 
-- I took on risk. And these days, third party dependencies are risky.
-- Sometimes that's a great trade. But increasingly, I don't think it's the best one, and I wanna talk about why.
+-  We added a dependency, and that comes with some fine print.
+- Prepare for dependabot alerts, supply chain attacks, upgrade stories. 
+- It means dealing with things going unmaintained, funky maintainers
+- And let's not even get into the ecosystem you actually buy into.
+- Remember this from last autumn? Oh yeah
+- And the funny part is, it's still worth it. We add gems because they save time.
+- We buy into all that risk and all that bad stuff, because the alternatives are worse.
+- Except I don't think that's necessarily true. I think there's a different way to think about using gems, and that's what I want to talk about today.
 -->
 
 ---
@@ -71,9 +61,15 @@ Freelance Ruby Engineer 💎
 
 <!--
 My name is Hans, I'm a Ruby freelancer from Vienna. I organize Vienna.rb and co-organize RubyConf Austria.
+Short plug, RubyConf Austria is the first ruby conf in Vienna since 2018 (which was Euroku), damn I'm old.
 -->
 
 ---
 layout: image
 image: /img/rubyconf-at.png
 ---
+
+<!--
+- Vienna is a 3 and half hour train ride from here, it's a single track conference conference. We got a killer roster of speakers
+- Check it out, or hit me up afterwards if you got questions.
+-->

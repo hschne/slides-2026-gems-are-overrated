@@ -1,3 +1,29 @@
+# Pagy
+
+```ruby [Gemfile]
+gem "pagy"
+```
+
+```ruby [app/controllers/products_controller.rb]
+def index
+  @pagy, @products = pagy(:offset, Product.all)
+end
+```
+
+```erb [app/views/products/index.html.erb]
+<%== @pagy.series_nav %>
+```
+
+<!--
+-
+- Let's keep bashing poor pagy. I'm sorry, it's great, shoutout to Domizio Demichelis who does a great job maintaining it. 
+- But it's also such a good example because the gap between what the gem does and what I may actually need is like ginourmous.
+- Who here uses pagy? It's like the swiss army knif of pagination. Vie helpers, countless pagination, cursor based pagination, plugins, the list goes on.
+- YAGNI and right now, I need just some basic pagination.
+-->
+
+---
+
 # Copy-Paste Pagy
 
 ```ruby [app/concerns/pagy.rb] {*}{lines:true}
@@ -24,14 +50,9 @@ module Pagy
 ```
 
 <!--
-- Pagination is a good example because the gap between what the gem does and what I may actually need is often huge.
-- A gem has to support many use cases, configuration options, adapters, styles, conventions, and edge cases. My app may just need a tiny subset of that.
-- So the question is not "am I smart enough to write pagination?" The question is: how much of pagination do I actually need to own in this app?
-- Very often, the answer is: not much.
-- A reduced version might fit into a single helper or concern.
-- The point of this example is not that pagination is easy. The point is that the useful part of the gem, for one app, may be dramatically smaller than the gem itself.
-- That is the gap I'm interested in.
-- I don't necessarily want to invent the solution from scratch. I want to borrow the right ideas and throw away the rest.
+- Here's some basic pagination
+- Thats what, 20 lines for a controller method
+- The interface is identical
 -->
 
 ---
@@ -53,6 +74,15 @@ module Pagy
 end
 ```
 
+<!--
+-
+- Here's another 10 or so for a basic view helper.
+- Look, my point is not pagination is so simple. It can be much more complicated than this.
+- The point is that the useful part of the gem, for one app, may be dramatically smaller than the gem itself.
+- That is the gap I'm interested in.
+- Because that's the gap where all the bad stuff and the downsides of gems come in.
+-->
+
 ---
 class: comparison
 ---
@@ -67,24 +97,30 @@ class: comparison
       <td style="text-align:right">53</td>
     </tr>
     <tr v-click>
-      <td>Dependabot Alerts</td>
-      <td style="text-align:right">Yes</td>
-      <td style="text-align:right">No</td>
+      <td>Releases</td>
+      <td style="text-align:right">83</td>
+      <td style="text-align:right">Nope</td>
+    </tr>
+    <tr v-click>
+      <td>Dependencies</td>
+      <td style="text-align:right">3</td>
+      <td style="text-align:right">You</td>
     </tr>
     <tr v-click>
       <td>Pain</td>
-      <td style="text-align:right">Yes</td>
-      <td style="text-align:right"><lucide-smile /></td>
+      <td style="text-align:right">Maybe?</td>
+      <td style="text-align:right">No</td>
     </tr>
   </tbody>
 </table>
 
 <!--
-- These are real numbers.
-- pagy is a great gem. It has 85 releases because it solves a broad problem well.
-- But if all I need is next and previous, I don't inherit any of that surface area.
-- 53 lines. One release. No upstream issues to track.
-- That is what distillation looks like in practice.
+- How big is the gap.
+- Pagy comes in at a cozy 2835 lines of code. Okay, I havent' sanitized that for comments, but like
+- what the frick, right?
+- It itself has 3 transitive dependencies
+- It has frequent releases, which is great, except if they change the API completely.
+- We don't have dependencies
 -->
 
 ---
@@ -114,9 +150,9 @@ end
 ```
 
 <!--
-- Authorization is another classic gem grab. I need to control who can do what, so I reach for Pundit.
-- The convention is elegant: one policy class per model, one method per action.
-- But again, the gem has to support namespaces, scopes, strong parameters, caching, view helpers, test helpers...
+- Let's take a look at another favorite. Who here's likes Pundit?
+- It's actually one of my favorite gems. It's so simple and elegent. You know how many lines of code the gem has?
+- Let's look at what you need to implement the core use case from scratch.
 -->
 
 ---
@@ -146,7 +182,8 @@ module Pundit
 ```
 
 <!--
-- The base class is the interesting part. Everything denied by default — you opt in per action.
+- The nice part about Pundit is that's it's mostly just OOP. 
+- So we got a base ApplicationPolicy 
 - That is the core idea. The rest of the gem is infrastructure around it.
 -->
 
@@ -171,9 +208,9 @@ end
 ```
 
 <!--
-- The authorize method is a single convention: take the record's class name, find the matching policy, call the right method.
-- PostPolicy, show?, done.
+- What infrastrcutre? This. A glorified constantize to get the right policy class. 
 - The whole gem in one method.
+- Who's your maintainer and what does he do?
 -->
 
 ---
@@ -188,17 +225,24 @@ end
       <td style="text-align:right">30</td>
     </tr>
     <tr v-click>
-      <td>Releases</td>
-      <td style="text-align:right">47</td>
-      <td style="text-align:right">1</td>
+      <td>Open issues</td>
+      <td style="text-align:right">15</td>
+      <td style="text-align:right">Nope</td>
     </tr>
     <tr v-click>
-      <td>Issues / month</td>
-      <td style="text-align:right">~3</td>
-      <td style="text-align:right">0</td>
+      <td>Stars</td>
+      <td style="text-align:right">8300</td>
+      <td style="text-align:right">You</td>
     </tr>
   </tbody>
 </table>
+
+<!--
+- The authorize method is a single convention: take the record's class name, find the matching policy, call the right method.
+- Stars vs You're the Star.
+- The whole gem in one method.
+- Who's your maintainer and what does he do?
+-->
 
 ---
 
@@ -220,8 +264,9 @@ method=GET path=/products format=html controller=ProductsController action=index
 
 <!--
 - Another example. Rails request logs are noisy by default — you get half a dozen lines per request, most of it noise.
-- Lograge collapses that into a single structured line.
-- Again: three lines, problem solved. But same story as before.
+- Lograge collapses that into a single structured line. I like Lograge..
+- Again: three lines, problem solved. But same story as before
+- How do we get literally just that? Now, this is actually complicated
 -->
 
 ---
@@ -252,10 +297,8 @@ class Lograge
 ```
 
 <!--
-- Here's the distilled version.
-- The Subscriber class is the core — one method, one hash, one line of output.
-- The setup machinery has to stay — that's what actually replaces Rails' default log subscribers.
-- But the feature code is tiny.
+- Just kidding
+-  It's a log subscribe that subscribes to ActionController a
 -->
 
 ---
@@ -279,8 +322,11 @@ class Lograge
 
     # ...
 
-
 ```
+
+<!--
+-  That we attach to action_controller and remove the default subscribers
+-->
 
 ---
 
@@ -307,26 +353,41 @@ end
 Lograge.setup
 ```
 
+<!--
+-  And some ceremony. Fun fact, this is a bugfix that is NOT upstream that I added because...
+-->
+
 ---
 
 # Lograge vs Copy-Paste
 
 <table>
   <tbody>
-    <tr>
+    <tr >
+      <td>Last commit</td>
+      <td style="text-align:right">Nov 2024</td>
+      <td style="text-align:right">today</td>
+    </tr>
+    <tr v-click>
       <td>Lines of code</td>
       <td style="text-align:right">863</td>
       <td style="text-align:right">55</td>
     </tr>
     <tr v-click>
-      <td>Releases</td>
-      <td style="text-align:right">39</td>
-      <td style="text-align:right">1</td>
+      <td>Issues</td>
+      <td style="text-align:right">68</td>
+      <td style="text-align:right">Me</td>
     </tr>
     <tr v-click>
-      <td>Issues / month</td>
-      <td style="text-align:right">~2</td>
+      <td>Dependencies</td>
+      <td style="text-align:right">4</td>
       <td style="text-align:right">0</td>
     </tr>
   </tbody>
 </table>
+
+<!--
+- Lograge hasn't been updated since 2024. And that matters, because it don't work so good with new Rails versions sometimes
+- Anyway, as usual, gives you lots of configurability that you don't need, so 800 LoC
+- Vs our 55.
+-->

@@ -1,14 +1,13 @@
 <template>
   <div class="slidev-layout cover">
-    <!-- Accent mark -->
     <div class="accent-mark" />
-    <!-- Main content -->
     <div class="cover-content">
       <slot />
     </div>
-    <!-- Footer label -->
     <div class="cover-footer">
-      <span class="cover-footer-label">Hans Schnedlitz, Balkan Ruby 2026</span>
+      <span class="cover-footer-label"
+        >Hans Schnedlitz · Munich Ruby Shift</span
+      >
     </div>
   </div>
 </template>
@@ -44,7 +43,7 @@
   position: absolute;
   bottom: 2rem;
   left: 4rem;
-  font-family: 'IBM Plex Mono', monospace;
+  font-family: "IBM Plex Mono", monospace;
   font-size: clamp(0.8rem, 0.95vw, 0.9rem);
   color: var(--cs-text);
   letter-spacing: 0.02em;
