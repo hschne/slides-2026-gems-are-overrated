@@ -1,9 +1,17 @@
-# Ending
+---
+layout: center
+class: text-center
+---
 
-- Not "gems are bad"
-- Not "rewrite everything"
-- Better middle ground
-- Own the smaller version of the idea
+# No dependencies, no rewrites
+
+<v-clicks>
+
+# Gems as blueprints
+
+# Copy the idea
+
+</v-clicks>
 
 <!--
 So the point is not that gems are bad.

@@ -2,7 +2,7 @@
    Concrete Syntax — Slidev Theme
    ============================================================ */
 
-@import url('https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@400;700;800;900&family=IBM+Plex+Mono:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@400;700;800;900&family=IBM+Plex+Mono:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap");
 
 /* ============================================================
    Design Tokens
@@ -30,7 +30,7 @@
   /* Wire Slidev's code-block system into our tokens */
   --slidev-code-background: var(--cs-card);
   --slidev-code-foreground: var(--cs-foreground);
-  --slidev-code-font-family: 'IBM Plex Mono', monospace;
+  --slidev-code-font-family: "IBM Plex Mono", monospace;
   --slidev-code-font-size: 11px;
   --slidev-code-line-height: 1.6;
   --slidev-code-padding: 0.75rem;
@@ -65,7 +65,7 @@
    ============================================================ */
 
 .slidev-layout {
-  font-family: 'IBM Plex Mono', monospace;
+  font-family: "IBM Plex Mono", monospace;
   background-color: var(--cs-background);
   color: var(--cs-foreground);
   font-size: clamp(0.95rem, 1.1vw, 1.05rem);
@@ -78,7 +78,7 @@
   h4,
   h5,
   h6 {
-    font-family: 'Big Shoulders Display', sans-serif;
+    font-family: "Big Shoulders Display", sans-serif;
     font-weight: 700;
     text-transform: uppercase;
     letter-spacing: 0.02em;
@@ -140,7 +140,7 @@
   }
 
   /* Inline code — use Slidev vars so it stays consistent */
-  :not(pre)>code {
+  :not(pre) > code {
     font-family: var(--slidev-code-font-family);
     font-size: var(--slidev-code-font-size);
     background-color: var(--slidev-code-background);
@@ -181,7 +181,7 @@
   }
 
   th {
-    font-family: 'Big Shoulders Display', sans-serif;
+    font-family: "Big Shoulders Display", sans-serif;
     font-weight: 700;
     text-transform: uppercase;
     font-size: 0.9rem;
@@ -228,9 +228,6 @@
   border-radius: 0;
 }
 
-
-
-
 /* ============================================================
    Layouts
    ============================================================ */
@@ -242,7 +239,7 @@
   position: relative;
 
   &::before {
-    content: '';
+    content: "";
     display: block;
     position: absolute;
     top: 3rem;
@@ -259,7 +256,7 @@
     margin-bottom: 0.5rem;
   }
 
-  h1+p {
+  h1 + p {
     font-size: clamp(1.1rem, 2vw, 1.5rem);
     color: var(--cs-text-strong);
     margin-top: 0.75rem;
@@ -278,7 +275,7 @@
     letter-spacing: -0.02em;
   }
 
-  h1+p {
+  h1 + p {
     font-size: clamp(1rem, 1.8vw, 1.25rem);
     color: var(--cs-text);
     margin-top: 1.5rem;
@@ -319,7 +316,6 @@
       cursor: text;
     }
   }
-
 }
 
 .slidev-layout.comparison-slide {}
@@ -336,7 +332,7 @@
   }
 }
 
-.slidev-layout.full.cost-curve {
+.slidev-layout.full.diagram {
   @apply h-full w-full flex flex-col justify-center;
   padding: 1.5rem 2rem;
 
@@ -381,13 +377,13 @@
   }
 
   /* Respect markdown column alignment markers */
-  th[align='right'],
-  td[align='right'] {
+  th[align="right"],
+  td[align="right"] {
     text-align: right;
   }
 
-  th[align='center'],
-  td[align='center'] {
+  th[align="center"],
+  td[align="center"] {
     text-align: center;
   }
 
@@ -415,7 +411,7 @@
   }
 
   &::after {
-    content: '';
+    content: "";
     display: block;
     height: 1px;
     flex: 1;
@@ -433,7 +429,7 @@
 }
 
 .slidev-page-number {
-  font-family: 'IBM Plex Mono', monospace;
+  font-family: "IBM Plex Mono", monospace;
   font-size: clamp(0.72rem, 0.9vw, 0.8rem);
   color: var(--cs-text);
 }

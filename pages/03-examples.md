@@ -1,10 +1,8 @@
-# One-Page Pagy
+# Copy-Paste Pagy
 
 ```ruby [app/concerns/pagy.rb] {*}{lines:true}
 module Pagy
   module Controller
-    protected
-
     def pagy(scope, limit: 20)
       page        = [params[:page].to_i, 1].max
       count       = scope.count
@@ -38,6 +36,8 @@ module Pagy
 
 ---
 
+# Copy-Paste Pagy - Page 2
+
 ```ruby [app/concerns/pagy.rb] {*}{lines:true,startLine:23}
   module Helper
     def pagy_nav(pagy)
@@ -58,11 +58,11 @@ layout: fact
 class: comparison-slide
 ---
 
-|  | Pagy | Copy-Pasta Pagy |
-|---|---:|---:|
-| Lines of code | 2835 | 53 |
-| Releases | 85 | 1 |
-| Issues / month | ~9 | 0 |
+|                   |             Pagy |  Copy-Pasta Pagy |
+| ----------------- | ---------------: | ---------------: |
+| Lines of code     |             2835 |               53 |
+| Dependabot Alerts |              Yes |               No |
+| Pain              | <lucide-skull /> | <lucide-smile /> |
 
 <!--
 - These are real numbers.
@@ -106,7 +106,7 @@ end
 
 ---
 
-# One-File Pundit
+# Copy-Paste Pundit
 
 ```ruby [app/concerns/pundit.rb] {*}{lines:true}
 module Pundit
@@ -137,6 +137,8 @@ module Pundit
 
 ---
 
+# Copy-Paste Pundit
+
 ```ruby [app/concerns/pundit.rb] {*}{lines:true,startLine:20}
   class NotAuthorizedError < StandardError; end
 
@@ -163,13 +165,11 @@ end
 layout: fact
 ---
 
-
-|  | Pundit | Copy-Pasta Pundit |
-|---|---:|---:|
-| Lines of code | 1124 | 30 |
-| Releases | 47 | 1 |
-| Issues / month | ~3 | 0 |
-
+|                | Pundit | Copy-Pasta Pundit |
+| -------------- | -----: | ----------------: |
+| Lines of code  |   1124 |                30 |
+| Releases       |     47 |                 1 |
+| Issues / month |     ~3 |                 0 |
 
 ---
 
@@ -246,13 +246,27 @@ class Lograge
       Subscriber.attach_to :action_controller
     end
 
+    # ...
+
+
+```
+
+---
+
+```ruby [config/initializers/lograge.rb] {*}{lines:true,startLine:20}
     def unsubscribe(component, subscriber)
       events = subscriber.public_methods(false).reject { |m| m.to_s == "call" }
       events.each do |event|
         ActiveSupport::Notifications.notifier.all_listeners_for("#{event}.#{component}").each do |listener|
-          ActiveSupport::Notifications.unsubscribe(listener) if listener.instance_variable_get(:@delegate).class.name.start_with?("#{component.to_s.classify}::")
+          ActiveSupport::Notifications.unsubscribe(listener) if is_listener?(listener, component)
         end
       end
+    end
+
+    def is_listener?(listener, component)
+      # Workaround for ActionView::LogSubscriber changes after Rails 7.1
+      # See https://github.com/roidrage/lograge/issues/385
+      listener.instance_variable_get(:@delegate).class.name.start_with?("#{component.to_s.classify}::")
     end
   end
 end
@@ -264,9 +278,8 @@ Lograge.setup
 layout: fact
 ---
 
-
-|  | Lograge | Copy-Pasta Lograge |
-|---|---:|---:|
-| Lines of code | 863 | 55 |
-| Releases | 39 | 1 |
-| Issues / month | ~2 | 0 |
+|                | Lograge | Copy-Pasta Lograge |
+| -------------- | ------: | -----------------: |
+| Lines of code  |     863 |                 55 |
+| Releases       |      39 |                  1 |
+| Issues / month |      ~2 |                  0 |

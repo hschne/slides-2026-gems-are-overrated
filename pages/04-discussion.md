@@ -15,6 +15,8 @@ layout: fact
 -->
 
 ---
+footer: false
+---
 
 <figure class="h-full flex flex-col items-center justify-center gap-4 py-6">
   <img src="../img/friendly-ai-overlords.png" alt="Friendly AI overlords" class="max-h-[60vh] w-auto object-contain rounded" />
@@ -63,7 +65,6 @@ layout: image
 image: ./bcrypt.png
 ---
 
-
 <!--
 This approach is obviously not for everything.
 
@@ -78,8 +79,19 @@ If I would need a week to understand it, I should probably keep the dependency.
 -->
 
 ---
+layout: center
+class: text-center
+---
 
-# What About the Ecosystem?
+# Is this stealing?
+
+<v-clicks>
+
+# Will this kill the ecosystem?
+
+# Why should we contribute?
+
+</v-clicks>
 
 <!--
 There is an obvious critique here, which is that this sounds a bit parasitic.
@@ -99,7 +111,6 @@ So I don't think this replaces open source contribution. I think it changes what
 layout: image
 image: ./blueprint.png
 ---
-
 
 <!--
 That may be the larger shift here.
