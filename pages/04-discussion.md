@@ -79,6 +79,12 @@ If I would need a week to understand it, I should probably keep the dependency.
 -->
 
 ---
+
+# Valid Criticism
+
+<img src="/img/discussion.png" alt="Reservations" class="max-h-[60vh] w-auto object-contain rounded" />
+
+---
 layout: center
 class: text-center
 ---

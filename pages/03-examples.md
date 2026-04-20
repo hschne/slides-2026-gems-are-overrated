@@ -36,7 +36,7 @@ module Pagy
 
 ---
 
-# Copy-Paste Pagy - Page 2
+# Copy-Paste Pagy Page Two
 
 ```ruby [app/concerns/pagy.rb] {*}{lines:true,startLine:23}
   module Helper
@@ -54,15 +54,30 @@ end
 ```
 
 ---
-layout: fact
-class: comparison-slide
+class: comparison
 ---
 
-|                   |             Pagy |  Copy-Pasta Pagy |
-| ----------------- | ---------------: | ---------------: |
-| Lines of code     |             2835 |               53 |
-| Dependabot Alerts |              Yes |               No |
-| Pain              | <lucide-skull /> | <lucide-smile /> |
+# Pundit vs Copy-<span style="display:inline-grid"><span v-click.hide="1" style="grid-area:1/1">Page</span><span v-click="1" style="grid-area:1/1">Paste</span></span>
+
+<table>
+  <tbody>
+    <tr v-click>
+      <td>Lines of code</td>
+      <td style="text-align:right">2835</td>
+      <td style="text-align:right">53</td>
+    </tr>
+    <tr v-click>
+      <td>Dependabot Alerts</td>
+      <td style="text-align:right">Yes</td>
+      <td style="text-align:right">No</td>
+    </tr>
+    <tr v-click>
+      <td>Pain</td>
+      <td style="text-align:right">Yes</td>
+      <td style="text-align:right"><lucide-smile /></td>
+    </tr>
+  </tbody>
+</table>
 
 <!--
 - These are real numbers.
@@ -162,14 +177,28 @@ end
 -->
 
 ---
-layout: fact
----
 
-|                | Pundit | Copy-Pasta Pundit |
-| -------------- | -----: | ----------------: |
-| Lines of code  |   1124 |                30 |
-| Releases       |     47 |                 1 |
-| Issues / month |     ~3 |                 0 |
+# Pundit vs Copy-Paste
+
+<table>
+  <tbody>
+    <tr>
+      <td>Lines of code</td>
+      <td style="text-align:right">1124</td>
+      <td style="text-align:right">30</td>
+    </tr>
+    <tr v-click>
+      <td>Releases</td>
+      <td style="text-align:right">47</td>
+      <td style="text-align:right">1</td>
+    </tr>
+    <tr v-click>
+      <td>Issues / month</td>
+      <td style="text-align:right">~3</td>
+      <td style="text-align:right">0</td>
+    </tr>
+  </tbody>
+</table>
 
 ---
 
@@ -231,6 +260,8 @@ class Lograge
 
 ---
 
+# Copy-Paste Lograge
+
 ```ruby [config/initializers/lograge.rb] {*}{lines:true,startLine:20}
   class << self
     def setup
@@ -253,7 +284,9 @@ class Lograge
 
 ---
 
-```ruby [config/initializers/lograge.rb] {*}{lines:true,startLine:20}
+# Copy-Paste Lograge
+
+```ruby [config/initializers/lograge.rb] {*}{lines:true,startLine:34}
     def unsubscribe(component, subscriber)
       events = subscriber.public_methods(false).reject { |m| m.to_s == "call" }
       events.each do |event|
@@ -275,11 +308,25 @@ Lograge.setup
 ```
 
 ---
-layout: fact
----
 
-|                | Lograge | Copy-Pasta Lograge |
-| -------------- | ------: | -----------------: |
-| Lines of code  |     863 |                 55 |
-| Releases       |      39 |                  1 |
-| Issues / month |      ~2 |                  0 |
+# Lograge vs Copy-Paste
+
+<table>
+  <tbody>
+    <tr>
+      <td>Lines of code</td>
+      <td style="text-align:right">863</td>
+      <td style="text-align:right">55</td>
+    </tr>
+    <tr v-click>
+      <td>Releases</td>
+      <td style="text-align:right">39</td>
+      <td style="text-align:right">1</td>
+    </tr>
+    <tr v-click>
+      <td>Issues / month</td>
+      <td style="text-align:right">~2</td>
+      <td style="text-align:right">0</td>
+    </tr>
+  </tbody>
+</table>

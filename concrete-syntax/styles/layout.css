@@ -318,8 +318,6 @@
   }
 }
 
-.slidev-layout.comparison-slide {}
-
 .slidev-layout.default {
   padding: 2rem 3rem;
 
@@ -343,53 +341,6 @@
 
   .mermaid svg {
     max-width: none !important;
-  }
-}
-
-/* Emphasized tables when a fact slide contains a table */
-.slidev-layout.fact:has(table) {
-  @apply items-stretch;
-
-  h1 {
-    font-size: clamp(2.25rem, 5vw, 3.25rem);
-    line-height: 1;
-    margin-bottom: 1.25rem;
-    letter-spacing: 0.01em;
-  }
-
-  table {
-    width: min(100%, 1100px);
-    margin: 0 auto;
-    font-size: clamp(1rem, 1.8vw, 1.2rem);
-  }
-
-  th {
-    font-size: clamp(1.2rem, 2.4vw, 1.55rem);
-    padding: 0.7em 0.9em;
-    text-align: left;
-  }
-
-  td {
-    font-size: clamp(1rem, 1.8vw, 1.2rem);
-    padding: 0.65em 0.9em;
-    text-align: left;
-    color: var(--cs-text);
-  }
-
-  /* Respect markdown column alignment markers */
-  th[align="right"],
-  td[align="right"] {
-    text-align: right;
-  }
-
-  th[align="center"],
-  td[align="center"] {
-    text-align: center;
-  }
-
-  /* Keep first column as strong row labels */
-  tbody td:first-child {
-    font-weight: 500;
   }
 }
 

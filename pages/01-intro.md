@@ -13,13 +13,14 @@ end
 ```erb [app/views/products/index.html.erb]
 <%== @pagy.series_nav %>
 ```
+
 <!--
 - Let's start with something we're all familiar with.
 - We need some small piece of functionality - some new feature, some new utility -in our Rails app. 
 - Let's say I need pagination. So naturally, we use a gem.
 - It's so easy, it just works.
 - And the best part is I added like three lines of code.
-- But of course, that's not all I did. 
+- But of course, that's not all I did.
 -->
 
 ---
@@ -34,6 +35,7 @@ end
   './img/care.png',
   './img/drama.png',
 ]" />
+
 <!--
 - The issue is not that gems are bad. The issue is that we tend to stop the calculation too early.
 
@@ -63,10 +65,15 @@ image: /avatar.webp
 
 Freelance Ruby Engineer 💎
 
-- Vienna.rb & RubyConf Austria 
+- Vienna.rb & RubyConf Austria
 - [hansschnedlitz.com](https://hansschnedlitz.com) 🌐
 - [@hansschnedlitz](https://bsky.app/profile/hansschnedlitz.bsky.social)
 
 <!--
 My name is Hans, I'm a Ruby freelancer from Vienna. I organize Vienna.rb and co-organize RubyConf Austria.
 -->
+
+---
+layout: image
+image: /img/rubyconf-at.png
+---

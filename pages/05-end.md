@@ -9,7 +9,7 @@ class: text-center
 
 # Gems as blueprints
 
-# Copy the idea
+# Just copy pasta 🍝
 
 </v-clicks>
 
