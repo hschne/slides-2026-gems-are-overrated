@@ -354,7 +354,8 @@ Lograge.setup
 ```
 
 <!--
--  And some ceremony. Fun fact, this is a bugfix that is NOT upstream that I added because...
+-  And some ceremony. Fun fact, this is a bugfix that is NOT upstream that I added because, well the gem isn't that maintained anymore
+- Check this out
 -->
 
 ---
@@ -376,7 +377,7 @@ Lograge.setup
     <tr v-click>
       <td>Issues</td>
       <td style="text-align:right">68</td>
-      <td style="text-align:right">Me</td>
+      <td style="text-align:right">?</td>
     </tr>
     <tr v-click>
       <td>Dependencies</td>
@@ -388,6 +389,28 @@ Lograge.setup
 
 <!--
 - Lograge hasn't been updated since 2024. And that matters, because it don't work so good with new Rails versions sometimes
-- Anyway, as usual, gives you lots of configurability that you don't need, so 800 LoC
-- Vs our 55.
+- Guess what, your 55 line version you can update within seconds. No monkey patching required.
+- A couple of issues, yada yada.
+-->
+
+---
+layout: center
+class: text-center
+---
+
+# Create focused copy-pasta gems
+
+# Own the code
+
+# Avoid 'a little dependency'
+
+<!--
+- Look, I want to re-iterate, what's the point here.
+- It's not gems are bloated. Gems have a good reason to be the way that the are, because they want to appeal to everyone
+- It's that you can create a pure, focused version of the gem, that you own
+- And in doing so, you might learn a thing or two. You're not creating anyting from scratch
+- You're learning from the best
+- And in doing a focused, copy-pasta-able version of a gem, you get something that's effficient
+- Efficient why, because like we saw, it's tiny, you can easily reason about it. 
+- And you sidestep all the issues that you have with dependencies, even little ones
 -->

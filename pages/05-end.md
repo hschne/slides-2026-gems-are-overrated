@@ -3,23 +3,17 @@ layout: center
 class: text-center
 ---
 
-# No dependencies, no rewrites
+# This is not the end of gems
 
 <v-clicks>
 
-# Gems as blueprints
-
-# Just copy pasta 🍝
+# It just changes how we use them
 
 </v-clicks>
 
 <!--
-So the point is not that gems are bad.
-And it is not that everything should be rewritten in-house.
-
-The point is that the best alternative to a gem is often not building from scratch. It is owning a smaller version of the gem's core idea.
-
-Gems are still valuable. I just increasingly think of them less as permanent tenants in my app and more as excellent blueprints.
-
-That middle ground - between dependency and reinvention - is the part I find most interesting.
+- That is not the end of gems. And it is not the end of open source. 
+- If anything, it increases the value of gems and open source, because in the age of slop great ideas and implementations are like little nuggets of knowledge to hunt for.
+- We'll just change how we use them.
+- Gems might become a thing between dependency and reinvention - pieces of software worthy of copy paste
 -->
