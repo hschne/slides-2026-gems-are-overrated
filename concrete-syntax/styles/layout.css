@@ -223,6 +223,10 @@
   }
 }
 
+.slidev-code-block-title > div:not(.leading-1em) {
+  display: none;
+}
+
 .slidev-code-wrapper {
   border: 1px solid var(--cs-border);
   border-radius: 0;

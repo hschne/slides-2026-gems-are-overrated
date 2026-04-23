@@ -15,14 +15,13 @@ duration: 35min
 # Gems Are Overrated
 
 <!--
-- Hey everyone. It's a pleasure being here. 
-- Thanks to Aaron for inviting me. 
-- As an Ösi, Munich is my favorite German city
-- Because a) the beer is great and b) the dialect is somewhat similar, so as a Viennese I feel right at home
-- I hope you're not going to kick my out after this
-- This is the dress rehearsal for the Balkan Ruby in Sophia in a couple of weeks 
-- Which has a motto, "Hot Takes", which this certainly is. 
-- So let me tell you why Gems are actually overrated and you shouldn't use them
+- Hey everyone! 
+- It's great to be here. 
+- I haven't been in Munich in a while, so thank you for giving me an opportunity to come visit
+- Before we get into the talk I wanna take a second to explain the clickbaity title.
+- This today is the dress rehearsal for my talk at the Balkan Ruby conference in Sophia in a couple of weeks. 
+- And Balkan Ruby has a motto, and this years motto is "Hot Takes". 
+- So yeah, Hot take. Gems are overrated, and you shouldn't use em
 -->
 
 ---

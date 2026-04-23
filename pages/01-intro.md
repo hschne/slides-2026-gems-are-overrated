@@ -10,21 +10,24 @@ def index
 end
 ```
 
-```erb [app/views/products/index.html.erb]
+```html [app/views/products/index.html.erb]
 <%== @pagy.series_nav %>
 ```
 
 <!--
-- Let's start with something we're all familiar with, adding some gems.
-- Let's say we need some small piece of functionality - some new feature, some new utility -in our Rails app. 
-- Here I decided to pick on pagy, because it's such a nice example. We need pagination, so obviously we add the pagy gem.
-- And that's all there is to it. We literally added three lines of code it works and that's all there is to it.
-- Or is it?
+- Let's start with something we're all familiar with
+- We are working on some application and need some new feature or functionliaty
+- Let's say we need pagination.
+- We're responsible developers, so we google or ask our LLM for the best pagination gem to use.
+- It tells us to use Pagy, so that's what we add to our Gemfile.
+- We follow the instructions, add some code to our controllers and our views and we are done.
+- That' all it is. Actually gems are great, maybe my title should have been Gems are underrated.
+- Except those lines of code is not all we did.
 -->
 
 ---
 
-# Hidden Costs
+# Additional Costs
 
 <PhotoPile :images="[
   './img/dependabots.png',
@@ -36,14 +39,30 @@ end
 ]" />
 
 <!--
--  We added a dependency, and that comes with some fine print.
+- We added a dependency, and dependencies come with costs - the dependency tax.
 - Prepare for dependabot alerts, supply chain attacks, upgrade stories. 
 - It means dealing with things going unmaintained, funky maintainers
 - And let's not even get into the ecosystem you actually buy into.
 - Remember this from last autumn? Oh yeah
-- And the funny part is, it's still worth it. We add gems because they save time.
-- We buy into all that risk and all that bad stuff, because the alternatives are worse.
-- Except I don't think that's necessarily true. I think there's a different way to think about using gems, and that's what I want to talk about today.
+- And the funny part is, for the most party, we're aware of these issues
+- but we still accept them, we pay the dependency tax because it's still worth it.
+-->
+
+---
+layout: quote
+---
+
+> Gems are the worst form of dependency management except all the others.
+
+— Winston Churchill
+
+<!--
+- Because the alternatives are worse.
+- Even Churchill said something along those lines. Or he surely would have if Gems had been around at that time.
+- Except I don't think that's necessarily true anymore.
+- Today, there's a very viable alternative to using gems
+- And a whole new way to think about dependencies overall
+- That's what I want to talk about today.
 -->
 
 ---

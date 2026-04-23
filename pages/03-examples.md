@@ -15,11 +15,11 @@ end
 ```
 
 <!--
--
-- Let's keep bashing poor pagy. I'm sorry, it's great, shoutout to Domizio Demichelis who does a great job maintaining it. 
-- But it's also such a good example because the gap between what the gem does and what I may actually need is like ginourmous.
-- Who here uses pagy? It's like the swiss army knif of pagination. Vie helpers, countless pagination, cursor based pagination, plugins, the list goes on.
-- YAGNI and right now, I need just some basic pagination.
+- We're gonna keep dunking on poor pagy. I'm sorry, it's great, and I love what Domizio Demichelis who does with it
+- It's a really well maintained gem, but it's also a great example
+- Because the gap between what the gem does and what I need it to do is ginourmous.
+- Who actually here uses pagy? It's like the swiss army knif of pagination. Vie helpers, countless pagination, cursor based pagination, plugins, the list goes on.
+- YAGNI and right now, I need just some pagination.
 -->
 
 ---
@@ -50,18 +50,20 @@ module Pagy
 ```
 
 <!--
-- Here's some basic pagination
-- Thats what, 20 lines for a controller method
-- The interface is identical
+- Here's the logic for pagination
+- This snippet is ripped from Pagy and simplified by removing all the configurability and different use cases.
+- We count results/ divide bu number of results
+- Calculate the total number of pages and then do some good-ol offset based pagination.
+- Then we pass it to the view
 -->
 
 ---
 
 # Copy-Paste Pagy Page Two
 
-```ruby [app/concerns/pagy.rb] {*}{lines:true,startLine:23}
+```ruby [app/concerns/pagy.rb] {*}{lines:true,startLine:21}
   module Helper
-    def pagy_nav(pagy)
+    def series_nav(pagy)
       return unless pagy[:total_pages] > 1
 
       html = ""
@@ -75,23 +77,24 @@ end
 ```
 
 <!--
--
-- Here's another 10 or so for a basic view helper.
+- And here's the view helper.
+- Same story, same core logic, just distilled and reduced.
 - Look, my point is not pagination is so simple. It can be much more complicated than this.
 - The point is that the useful part of the gem, for one app, may be dramatically smaller than the gem itself.
-- That is the gap I'm interested in.
-- Because that's the gap where all the bad stuff and the downsides of gems come in.
+- It's so small that it can fit in a single file. A single file that I can move between projects as I need.
+- A one-file, copy paste dependency if you will.
+- Its 50 lines of code. How many do you think pagy has?
 -->
 
 ---
 class: comparison
 ---
 
-# Pundit vs Copy-<span style="display:inline-grid"><span v-click.hide="1" style="grid-area:1/1">Page</span><span v-click="1" style="grid-area:1/1">Paste</span></span>
+# Pagy vs Copy-Paste
 
 <table>
   <tbody>
-    <tr v-click>
+    <tr>
       <td>Lines of code</td>
       <td style="text-align:right">2835</td>
       <td style="text-align:right">53</td>
@@ -115,12 +118,13 @@ class: comparison
 </table>
 
 <!--
-- How big is the gap.
+- It has way more.
 - Pagy comes in at a cozy 2835 lines of code. Okay, I havent' sanitized that for comments, but like
 - what the frick, right?
 - It itself has 3 transitive dependencies
 - It has frequent releases, which is great, except if they change the API completely.
 - We don't have dependencies
+- We don't have any of that. We solve a problem, and we move on.
 -->
 
 ---
@@ -151,7 +155,7 @@ end
 
 <!--
 - Let's take a look at another favorite. Who here's likes Pundit?
-- It's actually one of my favorite gems. It's so simple and elegent. You know how many lines of code the gem has?
+- It's actually one of my favorite gems. It's so simple and elegent. 
 - Let's look at what you need to implement the core use case from scratch.
 -->
 
@@ -182,7 +186,7 @@ module Pundit
 ```
 
 <!--
-- The nice part about Pundit is that's it's mostly just OOP. 
+- The nice part about Pundit is that's at it's core it's just plain Ruby. 
 - So we got a base ApplicationPolicy 
 - That is the core idea. The rest of the gem is infrastructure around it.
 -->
@@ -195,10 +199,10 @@ module Pundit
   class NotAuthorizedError < StandardError; end
 
   module Controller
-    protected
+    protectedUser
 
     def authorize(record, query = :"#{action_name}?")
-      policy = "#{record.class}Policy".constantize.new(current_user, record)
+      policy = "#{record.class}Policy".constantize.new(Current.user, record)
       raise NotAuthorizedError unless policy.public_send(query)
 
       record
@@ -210,7 +214,6 @@ end
 <!--
 - What infrastrcutre? This. A glorified constantize to get the right policy class. 
 - The whole gem in one method.
-- Who's your maintainer and what does he do?
 -->
 
 ---
@@ -222,7 +225,7 @@ end
     <tr>
       <td>Lines of code</td>
       <td style="text-align:right">1124</td>
-      <td style="text-align:right">30</td>
+      <td style="text-align:right">32</td>
     </tr>
     <tr v-click>
       <td>Open issues</td>
@@ -240,8 +243,6 @@ end
 <!--
 - The authorize method is a single convention: take the record's class name, find the matching policy, call the right method.
 - Stars vs You're the Star.
-- The whole gem in one method.
-- Who's your maintainer and what does he do?
 -->
 
 ---
@@ -398,11 +399,11 @@ layout: center
 class: text-center
 ---
 
-# Create focused copy-pasta gems
+# Learn from the best
 
 # Own the code
 
-# Avoid 'a little dependency'
+# Avoid dependency tax
 
 <!--
 - Look, I want to re-iterate, what's the point here.

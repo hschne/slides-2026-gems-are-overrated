@@ -106,9 +106,9 @@ class: text-center
 
 <v-clicks>
 
-# Upstream any additions
+# Keep contributing
 
-# The role of open source changes
+# The role of OSS changes
 
 </v-clicks>
 
@@ -131,7 +131,4 @@ image: ./blueprint.png
 <!--
 - For me, I have started to think of libraries less of dependencies and more about valueble  reference implementations, blueprints, and collections of hard-won ideas I can adapt and adopt 
 - It's what open source enthusiasts have been preaching forever - just read the source - just on steroids.
-- That is not the end of gems. And it is not the end of open source. 
-- If anything, it increases the value of gems and open source, because in the age of slop great ideas and implementations are like little nuggets of knowledge to hunt for.
-- We'll just change how we use them.
 -->
