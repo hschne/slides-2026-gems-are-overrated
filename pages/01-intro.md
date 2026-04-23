@@ -30,12 +30,12 @@ end
 # Additional Costs
 
 <PhotoPile :images="[
-  './img/dependabots.png',
-  './img/supplychain.png',
-  './img/releases.png',
-  './img/readme.png',
-  './img/care.png',
-  './img/drama.png',
+  '/dependabots.png',
+  '/supplychain.png',
+  '/releases.png',
+  '/readme.png',
+  '/care.png',
+  '/drama.png',
 ]" />
 
 <!--
@@ -85,7 +85,7 @@ Short plug, RubyConf Austria is the first ruby conf in Vienna since 2018 (which 
 
 ---
 layout: image
-image: /img/rubyconf-at.png
+image: /rubyconf-at.png
 ---
 
 <!--

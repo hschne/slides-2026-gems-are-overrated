@@ -40,7 +40,7 @@ footer: false
 ---
 
 <figure class="h-full flex flex-col items-center justify-center gap-4 py-6">
-  <img src="../img/friendly-ai-overlords.png" alt="Friendly AI overlords" class="max-h-[60vh] w-auto object-contain rounded" />
+  <img src="/friendly-ai-overlords.png" alt="Friendly AI overlords" class="max-h-[60vh] w-auto object-contain rounded" />
   <figcaption class="text-sm">"Create an image depicting our friendly AI overlords"</figcaption>
 </figure>
 
@@ -66,7 +66,7 @@ layout: quote
 
 ---
 layout: image
-image: ./bcrypt.png
+image: /bcrypt.png
 ---
 
 <!--
@@ -85,7 +85,7 @@ image: ./bcrypt.png
 
 # Valid Criticism
 
-<img src="/img/discussion.png" alt="Reservations" class="max-h-[60vh] w-auto object-contain rounded" />
+<img src="/discussion.png" alt="Reservations" class="max-h-[60vh] w-auto object-contain rounded" />
 
 <!--
 - There's one more thing that I want to highlight
@@ -125,7 +125,7 @@ class: text-center
 
 ---
 layout: image
-image: ./blueprint.png
+image: /blueprint.png
 ---
 
 <!--
