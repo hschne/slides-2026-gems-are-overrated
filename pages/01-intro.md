@@ -30,12 +30,12 @@ end
 # Additional Costs
 
 <PhotoPile :images="[
-  '/dependabots.png',
-  '/supplychain.png',
-  '/releases.png',
-  '/readme.png',
-  '/care.png',
-  '/drama.png',
+  './dependabots.png',
+  './supplychain.png',
+  './releases.png',
+  './readme.png',
+  './care.png',
+  './drama.png',
 ]" />
 
 <!--

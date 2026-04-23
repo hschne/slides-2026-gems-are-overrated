@@ -109,11 +109,6 @@ class: comparison
       <td style="text-align:right">3</td>
       <td style="text-align:right">You</td>
     </tr>
-    <tr v-click>
-      <td>Pain</td>
-      <td style="text-align:right">Maybe?</td>
-      <td style="text-align:right">No</td>
-    </tr>
   </tbody>
 </table>
 
@@ -376,14 +371,9 @@ Lograge.setup
       <td style="text-align:right">55</td>
     </tr>
     <tr v-click>
-      <td>Issues</td>
-      <td style="text-align:right">68</td>
-      <td style="text-align:right">?</td>
-    </tr>
-    <tr v-click>
-      <td>Dependencies</td>
-      <td style="text-align:right">4</td>
-      <td style="text-align:right">0</td>
+      <td>Formatters</td>
+      <td style="text-align:right">All Of Them</td>
+      <td style="text-align:right">1</td>
     </tr>
   </tbody>
 </table>
